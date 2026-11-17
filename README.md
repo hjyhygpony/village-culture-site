@@ -1,5 +1,7 @@
 # Mentougou Village Culture Site
 
+![首页预览](docs/preview.png)
+
 门头沟传统村落文化展示网站，使用原生 HTML/CSS/JavaScript 构建。
 
 ## 页面
@@ -65,3 +67,4 @@ village-culture-site/
 - 为 `index.html` 保留根入口
 - 移除未完成且引用缺失图片的 `后续.html`
 - 将滚动横幅 PNG 转为体积更小的 JPG，并同步更新页面引用
+
