@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>龙王禅林古戏楼</title>
+    <style>
+        :root {
+            --primary-color: #6B4F2E;
+            --secondary-color: #9C7C55;
+            --accent-color: #C99D5D;
+            --dark-color: #4A341E;
+            --light-color: #F4EBD9;
+            --text-color: #3E3223;
+            --shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+            --scrollbar-thumb: #B38B6B;
+            --scrollbar-track: #F5E8D0;
+        }
+        
+        body {
+            font-family: 'Noto Serif SC', 'PingFang SC', 'Microsoft YaHei', serif;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0;
+            color: var(--text-color);
+            line-height: 1.8;
+            background-color: #F8F3E9;
+            background-image: url('data:image/svg+xml;utf8,<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path fill="%23C99D5D" fill-opacity="0.05" d="M0 0h100v100H0z"/></svg>');
+        }
+        
+        ::-webkit-scrollbar {
+            width: 10px;
+            height: 10px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: var(--scrollbar-track);
+            border-radius: 5px;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: var(--scrollbar-thumb);
+            border-radius: 5px;
+            border: 2px solid var(--scrollbar-track);
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--primary-color);
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--dark-color), var(--primary-color));
+            color: #F5E8D0;
+            padding: 3rem 2rem;
+            text-align: center;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow);
+            border-radius: 0 0 10px 10px;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 4px solid var(--accent-color);
+        }
+        
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml;utf8,<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path fill="none" stroke="%23C99D5D" stroke-opacity="0.1" stroke-width="1" d="M20,20 L80,20 L80,80 L20,80 Z M30,30 L70,30 L70,70 L30,70 Z" /></svg>');
+            opacity: 0.3;
+        }
+        
+        h1 {
+            font-size: 2.8rem;
+            margin: 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+            position: relative;
+            z-index: 1;
+            letter-spacing: 2px;
+            font-weight: 700;
+        }
+        
+        .subtitle {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            margin-top: 0.8rem;
+            position: relative;
+            z-index: 1;
+            font-style: italic;
+        }
+        
+        .container {
+            background: var(--light-color);
+            padding: 2.5rem;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            margin-bottom: 2.5rem;
+            border: 1px solid rgba(107, 79, 46, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .container::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100px;
+            height: 100px;
+            background: url('data:image/svg+xml;utf8,<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path fill="%23C99D5D" fill-opacity="0.05" d="M0,0 L100,0 L100,100 Z" /></svg>');
+            pointer-events: none;
+        }
+        
+        h2 {
+            color: var(--dark-color);
+            margin-top: 0;
+            padding-bottom: 0.8rem;
+            border-bottom: 3px solid var(--primary-color);
+            font-size: 2rem;
+            font-weight: 700;
+            position: relative;
+            letter-spacing: 1px;
+        }
+        
+        h2::after {
+            content: "";
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 100px;
+            height: 3px;
+            background: var(--accent-color);
+        }
+        
+        .content-text {
+            max-height: 300px;
+            overflow-y: auto;
+            padding-right: 1rem;
+            margin-bottom: 2rem;
+            border-right: 2px solid rgba(156, 124, 85, 0.2);
+        }
+        
+        .content-text p {
+            text-indent: 2em;
+            margin-bottom: 1.2em;
+            text-align: justify;
+        }
+        
+        .gallery-container {
+            position: relative;
+            margin: 2rem 0;
+        }
+        
+        .gallery-title {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            padding-left: 1rem;
+            border-left: 4px solid var(--accent-color);
+        }
+        
+        .gallery {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
+            gap: 1.5rem;
+            padding: 1rem 0;
+            margin: 0 -1rem;
+        }
+        
+        .gallery::-webkit-scrollbar {
+            height: 8px;
+        }
+        
+        .gallery-item {
+            scroll-snap-align: start;
+            flex: 0 0 280px;
+            height: 200px;
+            border-radius: 6px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            position: relative;
+            transition: transform 0.3s ease;
+            border: 1px solid rgba(107, 79, 46, 0.3);
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+        
+        .gallery-item::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 40%;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.6), transparent);
+        }
+        
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 1rem;
+            color: white;
+            z-index: 1;
+            font-size: 0.9rem;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+        
+        .gallery-nav {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .gallery-nav button {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        
+        .gallery-nav button:hover {
+            background: var(--accent-color);
+            transform: scale(1.1);
+        }
+        
+        /* 新增返回按钮样式 */
+        .back-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: rgba(245, 232, 208, 0.3);
+            border: 1px solid var(--light-color);
+            color: var(--light-color);
+            padding: 8px 15px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            transition: all 0.3s ease;
+            z-index: 10;
+            backdrop-filter: blur(5px);
+        }
+        
+        .back-button:hover {
+            background: rgba(245, 232, 208, 0.5);
+            transform: translateX(-3px);
+        }
+        
+        .back-button::before {
+            content: "←";
+            margin-right: 5px;
+            font-size: 1.1rem;
+        }
+        
+        /* 红色遗址卡片样式 */
+        .red-site-card {
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 6px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: var(--shadow);
+            border-left: 4px solid #C62828;
+            transition: transform 0.3s ease;
+        }
+        
+        .red-site-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        .red-site-title {
+            color: #C62828;
+            font-size: 1.4rem;
+            margin-top: 0;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+        
+        .red-site-number {
+            display: inline-block;
+            background: #C62828;
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 28px;
+            margin-right: 10px;
+            font-weight: bold;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 0 1rem;
+            }
+            
+            header {
+                padding: 2rem 1rem;
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .container {
+                padding: 1.5rem;
+            }
+            
+            .gallery-item {
+                flex: 0 0 220px;
+                height: 160px;
+            }
+            
+            .back-button {
+                top: 15px;
+                left: 15px;
+                padding: 6px 12px;
+                font-size: 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="javascript:history.back()" class="back-button">返回</a>
+
+        <h1>红色遗址</h1>
+        <div class="subtitle">Longwang Chanlin Ancient Opera Stage</div>
+    </header>
+    
+   
+
+    <div class="container">
+        <h2>冀热察挺进红色遗址</h2>
+        
+        <div class="red-site-card">
+            <h3 class="red-site-title"><span class="red-site-number">1</span>冀热察挺进军司令部旧址陈列馆</h3>
+            <p>冀热察挺进军司令部旧址陈列馆位于门头沟区斋堂镇马栏村，现为北京市重点文物保护单位，陈列馆展览面积100平方米，分4个展室，展出实物103件、图片175件、沙盘1座。1997年9月6日陈列馆被北京市政府公布为爱国主义教育基地，9月23日注册为博物馆，2000年10月被列为北京市国防教育基地。2008年3月28日陈列馆又被列为北京市33家免费开放博物馆之一。通过多年来不断的建设，马栏已经成为市级青少年教育基地、爱国主义教育基地、党员廉政教育基地、国防教育基地。</p>
+        </div>
+        
+        <div class="red-site-card">
+            <h3 class="red-site-title"><span class="red-site-number">2</span>冀热察挺进军警卫排旧址</h3>
+            <p>位于马栏村80号，一进院落。主要负责主要领导以及机关人员的安全保卫工作，特别是战时，在开展巡逻保卫、作战、领导机关转移等过程中起到了重要的作用，是保卫部队核心领导的一面坚强盾牌。</p>
+        </div>
+        
+        <div class="red-site-card">
+            <h3 class="red-site-title"><span class="red-site-number">3</span>八路军邓华支部驻地旧址（冀热察挺进军司令部伙房旧址）</h3>
+            <p>位于马栏村88号，二进院落。第一进院落是司令部伙房旧址，为司令部提供伙食供给；第二进院落为八路军邓华支队来到马栏后的驻地，房子主要供邓华等人作办公用。</p>
+        </div>
+        
+        <div class="red-site-card">
+            <h3 class="red-site-title"><span class="red-site-number">4</span>冀热察挺进军司令部机要科旧址</h3>
+            <p>位于马栏村86号，一进院落。在司令部院对面，主要负责对于上级和下级发送的电报进行接收和管理，分清文件级别，传送文件，做到及时准确。</p>
+        </div>
+        
+        <div class="red-site-card">
+            <h3 class="red-site-title"><span class="red-site-number">5</span>冀热察挺进军司令部通讯科旧址</h3>
+            <p>位于马栏村84号，一进院落。负责部队电台、电话的架设，是部队作战指令下达、部队联系配合等各类信息传达的重要部门，是部队的"神经系统"。</p>
+        </div>
+        
+        <div class="red-site-card">
+            <h3 class="red-site-title"><span class="red-site-number">6</span>萧克故居</h3>
+            <p>位于马栏村91号，一进院落。1939年挺进军司令部设在马栏后，萧克司令在此居住生活，在《萧克回忆录》中提到，萧克司令曾在此处创作了小说。目前院落为村集体产权，作为乡情村史陈列馆使用。</p>
+        </div>
+        
+        <div class="red-site-card">
+            <h3 class="red-site-title"><span class="red-site-number">7</span>冀热察挺进军修枪所旧址</h3>
+            <p>位于马栏村供给科旧址东南侧，一进院落。修枪所是挺进军重要的部门，由于当时我军条件落后，装备紧缺，一枪一弹都弥足珍贵，损坏的枪支也是宝贝，为此修枪所孕育而生。战斗后损坏的枪支要第一时间送到修枪所进行修理，竭尽全力维修枪支，确保部队武器数量，保证战斗力。</p>
+        </div>
+        
+        <div class="red-site-card">
+            <h3 class="red-site-title"><span class="red-site-number">8</span>抗战时期农会旧址</h3>
+            <p>位于马栏村97号，一进院落。由村中的贫苦农民和其他小资产阶级组成的革命政治联盟农会所在地。</p>
+        </div>
+        
+        <div class="red-site-card">
+            <h3 class="red-site-title"><span class="red-site-number">9</span>冀热察挺进军被服厂旧址</h3>
+            <p>旧址位于马栏村98号，一进院落。是为挺进军战士做被褥衣服的所在地，当年村中的百姓也来到这里帮忙，为战士们做棉衣，棉被，让战士们吃饱穿暖，一心杀敌。</p>
+        </div>
+        
+        <div class="red-site-card">
+            <h3 class="red-site-title"><span class="red-site-number">10</span>冀热察挺进军司令部四科旧址</h3>
+            <p>位于马栏村46号，一进院落。负责部队日常的档案管理、会议组织、政治宣传等工作，有效的保障了司令部工作的高效运转，并积极的宣传八路军的抗日政策，投身到抗战中来。</p>
+        </div>
+        
+        <div class="red-site-card">
+            <h3 class="red-site-title"><span class="red-site-number">11</span>冀热察挺进军十团团部作战室旧址</h3>
+            <p>位于马栏村47号，原为村中地主于成章家的宅院，后作为挺进军十团团部。挺进军十团前身为"冀东人民抗日联军"和"抗日先锋队"，合编后白乙化任团长。</p>
+        </div>
+        
+        <div class="red-site-card">
+            <h3 class="red-site-title"><span class="red-site-number">12</span>冀热察挺进军供给科旧址</h3>
+            <p>位于马栏村53号，挺进军军需用品的分配和发放部门，在物品极度紧缺的年代，最大限度的保障了作战部队的物资供应。</p>
+        </div>
+        
+        <div class="red-site-card">
+            <h3 class="red-site-title"><span class="red-site-number">13</span>抗战时期合作社旧址</h3>
+            <p>位于马栏村125号，一进院落。村民在党的帮助下组成合作社，自愿加入，合作生产，互助互利，既有力的支援了战争，又保证了农业生产，在参加合作社中，农民们在党的帮助下提高了思想觉悟，积极投身生产，支持前线抗战。</p>
+        </div>
+        
+        <div class="red-site-card">
+            <h3 class="red-site-title"><span class="red-site-number">14</span>冀热察挺进军弹药库旧址</h3>
+            <p>位于马栏村185号，一进院落。冀热察挺进军司令部和其他机关的弹药存放地，对部队至关重要。部队自上而下高度重视，加强管理，战士们设岗设哨，在弹药库周围日夜巡逻，确保弹药物资绝对安全。</p>
+        </div>
+        
+        <div class="red-site-card">
+            <h3 class="red-site-title"><span class="red-site-number">15</span>冀热察挺进军医院旧址</h3>
+            <p>位于马栏村187号，一进院落。挺进军医院是战士生命线的战斗堡垒，肩负着救治伤员的重要任务，尤其是在战斗残酷，医药短缺，条件艰苦的环境中，挺进军医生全力以赴，用有限的药品抢救伤员，保住战士们的生命，解除他们的伤痛。</p>
+        </div>
+        
+        <div class="red-site-card">
+            <h3 class="red-site-title"><span class="red-site-number">16</span>冀热察挺进住院处旧址</h3>
+            <p>位于马栏村226号，二进院落。伤员在医院接受治疗后，会转到住院处进行修养，早日恢复健康，重返战场杀日寇。在这个过程中，村中的百姓也自觉的担负起照顾伤员的任务，体现了军民鱼水情。</p>
+        </div>
+        
+        <div class="red-site-card">
+            <h3 class="red-site-title"><span class="red-site-number">17</span>冀热察挺进军修枪所旧址</h3>
+            <p>位于马栏村供给科旧址东南侧，一进院落。修枪所是挺进军重要的部门，由于当时我军条件落后，装备紧缺，一枪一弹都弥足珍贵，损坏的枪支也是宝贝，为此修枪所孕育而生。战斗后损坏的枪支要第一时间送到修枪所进行修理，竭尽全力维修枪支，确保部队武器数量，保证战斗力。</p>
+        </div>
+    </div>
+    
+    <script>
+        function scrollGallery(direction) {
+            const gallery = document.getElementById('imageGallery');
+            gallery.scrollBy({
+                left: direction * 300,
+                behavior: 'smooth'
+            });
+        }
+    </script>
+</body>
+</html>

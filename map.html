@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>门头沟12个传统村落地图</title>
+    <style>
+        body {
+            font-family: 'Microsoft YaHei', serif;
+            background-color: #F8F1E5;
+            background-image: url('https://img.freepik.com/free-photo/old-paper-texture_1194-5411.jpg');
+            background-attachment: fixed;
+            background-size: cover;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            color: #4A2B0F;
+        }
+        
+        /* 顶部导航样式 - 历史感设计 */
+        .village-nav {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            padding: 20px 15px;
+            background: linear-gradient(to bottom, #8B2E24, #6D1F1A);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 3px solid #D4A76A;
+        }
+        
+        .village-tab {
+            padding: 10px 22px;
+            background: rgba(248, 241, 229, 0.9);
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.4s;
+            border: 2px solid #B38B6D;
+            font-size: 16px;
+            white-space: nowrap;
+            color: #5C3A21;
+            font-weight: bold;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .village-tab:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.3);
+            color: #3A1F0F;
+            background: rgba(232, 213, 181, 0.9);
+        }
+        
+        .village-tab.active {
+            background: linear-gradient(to bottom, #D4A76A, #B38B6D);
+            color: #3A1F0F;
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.3);
+            border-color: #8B2E24;
+            font-weight: bold;
+        }
+        
+        /* 主内容区域 */
+        .header {
+            font-size: 36px;
+            color: #8B2E24;
+            margin: 30px 0;
+            padding: 0 15px;
+            text-shadow: 2px 2px 4px rgba(139, 46, 36, 0.2);
+            letter-spacing: 2px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .header:after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 3px;
+            background: #D4A76A;
+        }
+        
+        .map-container {
+            width: 95%;
+            max-width: 1000px;
+            margin: 20px auto;
+            position: relative;
+            padding: 15px;
+            background-color: rgba(248, 241, 229, 0.8);
+            border-radius: 8px;
+            border: 2px solid #B38B6D;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.2);
+        }
+        
+        .map-image {
+            width: 100%;
+            border: 4px solid #8B2E24;
+            border-radius: 5px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+            transition: all 0.4s;
+            max-height: 500px;
+            object-fit: contain;
+        }
+        
+        .map-image:hover {
+            transform: scale(1.01);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+        }
+        
+        /* 村落信息面板 - 历史感设计 */
+        .info-panel {
+            background: linear-gradient(to bottom, #F0E4D0, #E8D5B5);
+            width: 85%;
+            max-width: 800px;
+            margin: 30px auto;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+            text-align: left;
+            min-height: 200px;
+            border: 1px solid #B38B6D;
+            position: relative;
+        }
+        
+        .info-panel:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(to right, #8B2E24, #D4A76A);
+        }
+        
+        .village-name {
+            color: #8B2E24;
+            font-size: 26px;
+            margin-bottom: 15px;
+            border-bottom: 2px dashed #B38B6D;
+            padding-bottom: 8px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+        
+        .village-desc {
+            line-height: 1.8;
+            color: #4A2B0F;
+            font-size: 16px;
+            text-align: justify;
+            text-indent: 2em;
+        }
+        
+        .learn-more {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 25px;
+            background: linear-gradient(to bottom, #8B2E24, #6D1F1A);
+            color: #F0E4D0;
+            text-decoration: none;
+            border-radius: 25px;
+            transition: all 0.4s;
+            font-weight: bold;
+            font-size: 16px;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+            border: none;
+            cursor: pointer;
+            letter-spacing: 1px;
+        }
+        
+        .learn-more:hover {
+            background: linear-gradient(to bottom, #9B3E34, #7D2F2A);
+            transform: translateX(5px) translateY(-2px);
+            box-shadow: 0 5px 12px rgba(0,0,0,0.3);
+        }
+        
+        @media (max-width: 768px) {
+            .village-nav {
+                gap: 8px;
+                padding: 15px 10px;
+            }
+            .village-tab {
+                padding: 8px 16px;
+                font-size: 14px;
+            }
+            .info-panel {
+                width: 90%;
+                padding: 20px 15px;
+            }
+            .header {
+                font-size: 28px;
+            }
+            .village-name {
+                font-size: 22px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 顶部12个村落导航 -->
+    <div class="village-nav">
+        <div class="village-tab active" data-village="ml">马栏村</div>
+        <div class="village-tab" data-village="cdx">爨底下村</div>
+        <div class="village-tab" data-village="llq">琉璃渠村</div>
+        <div class="village-tab" data-village="sjd">三家店村</div>
+        <div class="village-tab" data-village="yhc">沿河城村</div>
+        <div class="village-tab" data-village="ls">灵水村</div>
+        <div class="village-tab" data-village="hlx">黄岭西村</div>
+        <div class="village-tab" data-village="js">碣石村</div>
+        <div class="village-tab" data-village="xhl">西胡林村</div>
+        <div class="village-tab" data-village="wzs">苇子水村</div>
+        <div class="village-tab" data-village="qjt">千军台村</div>
+        <div class="village-tab" data-village="dsgy">东石古岩村</div>
+    </div>
+    
+    <div class="header">门头沟12个传统村落地图</div>
+    
+    <!-- 地图容器 -->
+    <div class="map-container">
+        <img src="ml.jpg" class="map-image" alt="马栏村地图" id="village-image">
+    </div>
+    
+    <!-- 村落信息面板 -->
+    <div class="info-panel">
+        <div class="village-name" id="village-title">马栏村</div>
+        <div class="village-desc" id="village-description">
+            马栏村是一座具有北方典型山地村落特色的红色文化村。
+            马栏村位于北京市门头沟区斋堂镇辖区内，地处太行山余脉，平均海拔600米。村域面积13.68平方公里，南北长1000米东西；宽200米，村落面积19277.5亩，其中耕地面积652亩。马栏村依山势而建，以龙王庙为中心，沿山体呈带型展开，是北方少有的沿水街逐渐发展形成的村落。村落始建于元代，原为圈养马匹之地，因而得名"马栏"。抗日战争时期，马栏村为萧克将军、邓华将军所领导的冀热察挺进军司令部驻地，村内有大量红色文化遗存。
+            马栏村所在的斋堂镇是西部地区的中心，地域广阔，地形复杂，资源丰富，全镇大多是山地淋溶褐土。马栏村得天独厚的自然景观成为马栏村发展旅游的珍贵资源，其中马栏村的最高峰——老龙窝，海拔1645.5米。主要沟谷有：梨园沟、长榆沟、罗班沟、水湖子沟、塔院沟、大槽沟、罗子峪、水浒港等组成。自然景观多彩丰富是珍贵的旅游资源。
+        </div>
+        <a href="village/malan.html" class="learn-more" target="_blank" id="learn-more-link">了解更多 →</a>
+    </div>
+    
+    <script>
+        // 村落数据
+        const villageData = {
+            "ml": {
+                name: "马栏村",
+                image: "ml.jpg",
+                description: "马栏村是一座具有北方典型山地村落特色的红色文化村。马栏村位于北京市门头沟区斋堂镇辖区内，地处太行山余脉，平均海拔600米。村域面积13.68平方公里，南北长1000米东西；宽200米，村落面积19277.5亩，其中耕地面积652亩。马栏村依山势而建，以龙王庙为中心，沿山体呈带型展开，是北方少有的沿水街逐渐发展形成的村落。村落始建于元代，原为圈养马匹之地，因而得名'马栏'。抗日战争时期，马栏村为萧克将军、邓华将军所领导的冀热察挺进军司令部驻地，村内有大量红色文化遗存。马栏村所在的斋堂镇是西部地区的中心，地域广阔，地形复杂，资源丰富，全镇大多是山地淋溶褐土。马栏村得天独厚的自然景观成为马栏村发展旅游的珍贵资源，其中马栏村的最高峰——老龙窝，海拔1645.5米。主要沟谷有：梨园沟、长榆沟、罗班沟、水湖子沟、塔院沟、大槽沟、罗子峪、水浒港等组成。自然景观多彩丰富是珍贵的旅游资源。",
+                link: "village/malan.html"
+            },
+            "cdx": {
+                name: "爨底下村",
+                image: "cdx.jpg",
+                description: "爨底下村赖以成名的就是古建民居，现存有清代民居74套、689间。大部分为清后期所建(少量建于民国时期)的四合院、三合院。村庄依山而建，依势而就，高低错落。以村的后龙头为圆心，南北为轴线，整个村庄呈扇面形展于两侧。村上、村下被一条长200米，最高处20米的弧形大墙分开，村前又被一条长170米的弓形墙围绕，使全村形不散而神更聚。三条通道贯穿上下，还有更具防洪、防匪之功能的建筑格局，这些古民居建筑是宝贵的历史文物，对研究我国的民居建筑史具有重要的作用。著名的古建专家罗哲文先生说：'爨底下古山村是一颗中国古典建筑瑰宝的明珠，它蕴藏着深厚的北方建筑文化的内涵，就其历史文化艺术价值来说，不仅在北京，就是在全国也属珍贵之列。'现在爨地下村的古建民居已被列为国家级重点文物保护单位。2003年11月27日，原建设部和国家文物局授予该村为第一批'中国历史文化名村'称号，2012年12月17日，被国家住建部、文化部、财政部授予第一批'中国传统村落'称号，把一幅古朴、完整的'清代民居图'展现给了世人。",
+                link: "village/cuandixia.html"
+            },
+            "llq": {
+                name: "琉璃渠村",
+                image: "llq.jpg",
+                description: "琉璃渠村,背靠九龙山,东临永定河,以烧制皇家琉璃闻名,是有着浓厚历史底蕴的'琉璃之乡',2007年琉璃渠村被评为'中国历史文化名村',其琉璃烧造技艺于2008年被列入第二批国家级非物质文化遗产名录。独特的地理位置、自然资源和历史机遇造就了以琉璃烧造业为核心产业的琉璃渠古村落,围绕着这一产业,形成了琉璃渠古村独特的村落空间形态和琉璃烧造、农业、交通运输业组成的产业链,而不同的业态的存在又形成了不同的地缘文化圈(移民)和民俗信仰文化圈,这一切构成了琉璃渠古村落独特的文化生态。自辽代以后琉璃渠村开始有琉璃制造业，因为这里不但产坩子土和煤矿，而且水源充足，交通方便，是建窑烧造琉璃最理想的地方。于是元代在此便为烧制琉璃设立了专管窑务的官员，明代继续在此设立琉璃厂，并由皇家派出官员主持琉璃烧制之事，明代《宛署杂记》是最早记载'琉璃局'村名的史料。清康熙年间，北京城内正阳门外琉璃厂迁至琉璃局，至此琉璃渠村成为皇宫建设专用琉璃制品的生产基地。清光绪六年（1880年），永定河泛滥，朝廷委派官员治理永定河河道，在琉璃局村修建了一条大灌区，因为'局'、'渠'谐音，琉璃局逐渐被称作'琉璃渠'。直到1949年新中国成立以后，该村才正式定名为'琉璃渠村'。",
+                link: "village/liuliqu.html"
+            },
+            "sjd": {
+                name: "三家店村",
+                image: "sjd.jpg",
+                description: "三家店村明代成村，原村有三家店铺，故名。三家店村地域面积4524亩，2006年有户数6788户，人口15759人，村里外来人口较多，现总人口超过2万，是名副其实的京西大村。三家店村是北京市公布的第一批历史文化保护街区之一，位于门头沟区东部，为龙泉镇辖村。东与石景山区相邻，距离市中心24公里，西隔永定河与门头沟主城区相望。三家店村地处北京市西部山区与平原的结合部，是永定河的出山口，是北京西部的交通枢纽。三家店村是一个千年古村，历史文化丰富，保留有大量的文物古迹。历史上，三家店的商业十分发达，是京西煤炭外运的集散地、京城商品运往西部山区的中转站，三里长的商业街上有店铺百余家。村中现存文物古迹众多，天利煤厂、龙王庙、白衣观音庵、二郎庙、关帝庙、铁锚寺和山西会馆等是村内保留完好的建筑。其中，天利煤厂是北京市政府公布的第六批文物保护单位；龙王庙是北京市门头沟区政府公布的第一批文物保护单位；白衣观音庵是北京市门头沟区政府公布的第四批文物保护单位。",
+                link: "village/sanjiadian.html"
+            },
+            "yhc": {
+                name: "沿河城村",
+                image: "yhc.jpg",
+                description: "沿河城村位于门头沟区西北崇山峻岭的大峡谷中，刘家峪沟和永定河的交汇处，是历史上重要的军事要塞。沿河城旧属真保镇紫荆关所辖，是塞外通往北京的要冲之一。1984年，'沿河城与敌台'被公布为北京市文物保护单位。沿河城作为一个军事要塞，建有城墙防御工事，整个村落被城墙完全包裹，其防御的特性使其选择村落形态时尽量减少边界的长度以便于城墙环绕，因此整个村落呈现出防御性集中式的布局。沿河城村东西长约420米，南北长约300米，周长1182米。东西设城门，南北设有券形水门，四角建有角台。现村落向北侧永定河畔和西侧发展。沿河城村整体空间格局并没有严谨的几何特征，村落内地形变化比较平缓，房屋排列沿平行于等高线的方向布置。主要街道为两条东西走向的前街和后街，与之相连有南北走向次巷道，多由琐碎的菱形或不规则形状石板砌筑。",
+                link: "village/yanheyu.html"
+            },
+            "ls": {
+                name: "灵水村",
+                image: "ls.jpg",
+                description: "灵水村位于北京市门头沟区斋堂镇，距离北京市中心78km，距离109国道4km.整个村落面积约6.4万平方米，略呈长方形，平均海拔430m，地势西北高，东南低。灵水村现有200余户700余人。该村四周群山环绕，风光秀美，有东岭石人、北山翠柏、柏抱桑榆等'灵水八景'。村内还保存有大量的明清时期的寺庙、民居院落等建筑，整体格局和传统风貌均保存较为完好。2005年11月，被公布为'中国历史文化名村'(第二批);2012年，被公布为'中国传统村落'(第一批)。该村历史悠久，文化发达，明清时期，村内先后出了进士、举人、监生多名，被称为'举人村'。村内主要有刘、谭两大姓氏，此外，还有王、林、田、白、杜、廖、寇等姓氏。",
+                link: "village/lingshui.html"
+            },
+            "hlx": {
+                name: "黄岭西村",
+                image: "hlx.jpg",
+                description: "黄岭西，顾名思义，地处黄岭之西，明万历年间《宛署杂记》中记有：'黄岭，在县西二百余里……出水火炭(即煤)'。黄岭西村名，始见于清《康熙宛平县志》。就是说，成村年代不晚于明末清初，已有300年以上的历史。村内至今保存有100余处古民居建筑，古寺庙灵泉庵保存完好，菩萨庙、龙王庙和清泰寺遗址犹存，原有的五道庙、九龙庙、山神庙已经不在。黄岭西村有着鲜艳的红色文化，在抗日战争时期曾出过'黄岭西排'，在抗日战争、解放战争及新中国建设时期，有19位烈士为国捐躯，今又以'红歌唱响黄岭西'成为京西旅游的亮点。",
+                link: "village/huangling.html"
+            },
+            "js": {
+                name: "碣石村",
+                image: "js.jpg",
+                description: "碣石村地处北京市门头沟区雁翅镇西南部，环境优雅，景色秀美，保留着众多的古民居和淳朴的民俗民风，荣获了中国传统村落，北京市乡村民俗旅游村等称号。碣石村历史悠久，文化底蕴深厚，尤其以水井数量多而出名。72眼古井散布在村内各处，被中国城市建设研究院命名为'京西井养第一村'。村中东西走向的中街长200米，六条南北走向的胡同与主街次第交错，保存完好的明清古民居院落错落分布其中，院中各种陈设雕饰都保持着古朴的风格，石雕和墙壁题字随处可见，具有浓厚的古风韵致。现在保存下来的文物主要有：重修圣泉寺碑一座，龙王庙一座。高家坟出土的金代定窑花碗碟，十二生肖的铜镜，铜灯等，已由区博物馆收藏。",
+                link: "village/jieshi.html"
+            },
+            "xhl": {
+                name: "西胡林村",
+                image: "xhl.jpg",
+                description: "西胡林村位于北京市门头沟区斋堂镇，地处京西古道中段，村域面积12.2平方公里，聚落面积4万平方米。村落北依清水河，东邻东胡林村，西接'大平台'与高铺村隔河相望，南有远近闻名的通州峪景区，地理位置优越。目前，全村600余人，均为汉族，以谭、石、王三个姓氏为主。村子历史底蕴深厚，自然环境优美，农耕兴盛，商旅发达，有'上下清水小龙门，东西斋堂西胡林'之美称。因此，该村于2016年被公布为第四批中国传统村落。",
+                link: "village/xihulin.html"
+            },
+            "wzs": {
+                name: "苇子水村",
+                image: "wzs.jpg",
+                description: "苇子水村为北京市门头沟区雁翅镇辖村，位于镇域东部，东距北京城55公里，东南距区政府驻地22.1公里，北距田庄村1.5公里，东距南山村2.8公里，西南距109国道芹峪口检查站6公里，芹峪公路（芹峪口---高崖口）从村西穿过。苇子水村位于低山地带，海拔560米，面积1万平方米，是一个美丽的小山村。历史上这里水源丰富，河沟上端及西侧芦苇很多，村民也习称此村为'苇滋水'。村子所处之地为'九梁八岔'，即九条山梁汇聚于一个山谷，被视为'九龙戏金盆'的风水宝地。有人用这样的话来形容苇子水：'九龙八岔古涧幽，八水同聚十二桥。百户同宗都姓高，同居龙身数百年。十二座石桥卧就，成为村中主街道；一榆两槐四古柏，祥云瑞彩入高宅：村民互助又友善，尊老爱幼传至今。路不拾遗人友善，夜不闭户宅家安。宁静祥和民风好；恬淡生活似神仙。'",
+                link: "village/weizishui.html"
+            },
+            "qjt": {
+                name: "千军台村",
+                image: "qjt.jpg",
+                description: "千军台村位于门头沟区清水涧沟西端，隶属大台街道，村落占地面积5平方公里。千军台村坐落在门头沟区京西古道主干道——西山大路上，自古是商旅往来的必经之路。千军台村早在宋朝以前就已建村，史称'千人台'，有上千年历史。千军台村村东有古桥一座，位于八里沟沟口，俗称千军台老桥。在村中街旁有一颗古槐，市一级古树，是千军台的象征，被誉为村庄吉祥树。本村传承下来的北京市非物质文化遗产'京西古幡会'，被文化部列入'中国民族民间文化保护工程第二批试点名单'。古幡会一年一次，有300多人参演。2013年8月，千军台村入选第二批中国传统村落名录。",
+                link: "village/qianjuntai.html"
+            },
+            "dsgy": {
+                name: "东石古岩村",
+                image: "dsgy.jpg",
+                description: "东石古岩村位于北京市门头沟王平镇域东部，史称石骨崖、石窟崖，俗称大石古岩。村庄东南距区政府驻地（直线）8公里，西北距镇政府驻地2公里。行政管属：北京市门头沟王平镇政府。整个村庄修建在西山坡上，依照着山坡的走向，铲去镐出，垫起低洼，建起房屋。有山坡及河滩地共381亩，土壤为山地淋溶褐土和碳酸盐褐土，植被有荆条、酸枣灌丛及山榆，黄栌、山桃及杂草等，还有落叶阔叶林及梨、柿、核桃、枣等果树。生活饮用水为机井水，农业灌溉有色（树坟）妙（峰山）灌渠。门板铁路（原门斋铁路）、下安（下苇甸至安家庄）公路（现为109国道辅线）从村庄东边穿过，929路公交车设有'东石古岩'站，交通便利。村庄聚落沿永定河西侧呈矩形分布，村域总面积86公顷，东至'对过岩'岭脊，南至马庄沟南小湾，西至翻江沟山梁，北至丰沙铁路北坡根。户籍人口：村里有94户人家，162人，均为居民户口。气候属温带季风型，气温低而多变，多风沙，夏季最高气温在37摄氏度，冬季最低气温在零下20摄氏度左右，年平均降水量475毫米，无霜期170天。",
+                link: "village/dongshiguyan.html"
+            }
+        };
+
+        // 获取DOM元素
+        const tabs = document.querySelectorAll('.village-tab');
+        const villageImage = document.getElementById('village-image');
+        const villageTitle = document.getElementById('village-title');
+        const villageDescription = document.getElementById('village-description');
+        const learnMoreLink = document.getElementById('learn-more-link');
+
+        // 添加点击事件
+        tabs.forEach(tab => {
+            tab.addEventListener('click', function() {
+                // 移除所有active类
+                tabs.forEach(t => t.classList.remove('active'));
+                // 给当前点击的添加active类
+                this.classList.add('active');
+                
+                // 获取村落ID
+                const villageId = this.getAttribute('data-village');
+                const village = villageData[villageId];
+                
+                // 更新内容
+                villageImage.src = village.image;
+                villageImage.alt = village.name + "地图";
+                villageTitle.textContent = village.name;
+                villageDescription.textContent = village.description;
+                learnMoreLink.href = village.link;
+            });
+        });
+    </script>
+</body>
+</html>

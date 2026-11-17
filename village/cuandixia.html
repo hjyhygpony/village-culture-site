@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>爨底下村 - 中国古典建筑瑰宝的明珠</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #8B6B3D; /* 深棕色 */
+            --secondary-color: #B38B6B; /* 黄棕色 */
+            --accent-color: #D4A76A; /* 金色 */
+            --dark-color: #5C3A21; /* 深褐色 */
+            --light-color: #F5E8D0; /* 米黄色 */
+            --text-color: #4A3A2A; /* 深棕灰色 */
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        body {
+            font-family: 'Noto Serif SC', 'PingFang SC', 'Microsoft YaHei', serif;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0;
+            color: var(--text-color);
+            line-height: 1.8;
+            background-color: #F9F5ED;
+            background-image: url('data:image/svg+xml;utf8,<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path fill="%23D4A76A" fill-opacity="0.03" d="M0 0h100v100H0z"/></svg>');
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--dark-color), var(--primary-color));
+            color: #F5E8D0;
+            padding: 3rem 2rem;
+            text-align: center;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow);
+            border-radius: 0 0 10px 10px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 10px;
+            background: linear-gradient(90deg, transparent, var(--accent-color), transparent);
+            opacity: 0.5;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin: 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            position: relative;
+            z-index: 1;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-top: 0.5rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .container {
+            background: var(--light-color);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            margin-bottom: 2rem;
+            border: 1px solid rgba(139, 107, 61, 0.2);
+        }
+        
+        h2 {
+            color: var(--dark-color);
+            margin-top: 0;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--primary-color);
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+        
+        h3 {
+            color: var(--primary-color);
+            margin-top: 1.5rem;
+            font-size: 1.4rem;
+            font-weight: 600;
+        }
+        
+        ul {
+            padding-left: 1.5rem;
+        }
+        
+        li {
+            margin-bottom: 0.8rem;
+            position: relative;
+            list-style-type: none;
+            padding-left: 1.5rem;
+        }
+        
+        li:before {
+            content: "•";
+            color: var(--accent-color);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+            font-size: 1.2em;
+        }
+        
+        .card-container {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            margin: 1.5rem 0;
+        }
+        
+        .card {
+            flex: 1 1 300px;
+            background: rgba(255, 255, 255, 0.7);
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease;
+            border: 1px solid rgba(139, 107, 61, 0.2);
+            backdrop-filter: blur(2px);
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        .card h3 {
+            margin-top: 0;
+            color: var(--dark-color);
+        }
+        
+        .more-link {
+            display: inline-block;
+            color: var(--dark-color);
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 1rem;
+            padding: 0.5rem 1rem;
+            border: 2px solid var(--primary-color);
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            background: rgba(180, 140, 80, 0.1);
+        }
+        
+        .more-link:hover {
+            background-color: var(--primary-color);
+            color: var(--light-color);
+            text-decoration: none;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 1.5rem;
+            color: var(--primary-color);
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(139, 107, 61, 0.3);
+            margin-top: 1rem;
+        }
+        
+        strong {
+            color: var(--dark-color);
+            font-weight: 700;
+        }
+        
+        /* 新增的可点击列表项样式 */
+        .clickable-item {
+            cursor: pointer;
+            transition: all 0.2s ease;
+            padding: 0.5rem;
+            border-radius: 4px;
+        }
+        
+        .clickable-item:hover {
+            background-color: rgba(211, 167, 106, 0.2);
+            transform: translateX(5px);
+        }
+        
+        .clickable-item a {
+            color: inherit;
+            text-decoration: none;
+            display: block;
+        }
+        
+        .clickable-item a:hover {
+            text-decoration: underline;
+            text-decoration-color: var(--accent-color);
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 0 1rem;
+            }
+            
+            header {
+                padding: 2rem 1rem;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .container {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<header>
+    <h1>爨底下村</h1>
+    <div class="subtitle">中国古典建筑瑰宝的明珠 · 中国历史文化名村</div>
+</header>
+
+<div class="container">
+    <section>
+        <h2>历史文化</h2>
+        <p>中国古典建筑瑰宝的明珠。爨底下村赖以成名的就是古建民居，现存有清代民居74套、689间。大部分为清后期所建（少量建于民国时期）的四合院、三合院。村庄依山而建，依势而就，高低错落。以村的后龙头为圆心，南北为轴线，整个村庄呈扇面形展于两侧。村上、村下被一条长200米，最高处20米的弧形大墙分开，村前又被一条长170米的弓形墙围绕，使全村形不散而神更聚。三条通道贯穿上下，还有更具防洪、防匪之功能的建筑格局，这些古民居建筑是宝贵的历史文物，对研究我国的民居建筑史具有重要的作用。著名的古建专家罗哲文先生说：“爨底下古山村是一颗中国古典建筑瑰宝的明珠，它蕴藏着深厚的北方建筑文化的内涵，就其历史文化艺术价值来说，不仅在北京，就是在全国也属珍贵之列。”现在爨底下村的古建民居已被列为国家级重点文物保护单位。2003年11月27日，原建设部和国家文物局授予该村为第一批“中国历史文化名村”称号，2012年12月17日，被国家住建部、文化部、财政部授予第一批“中国传统村落”称号，把一幅古朴、完整的“清代民居图”展现给了世人。</p>
+
+        <div class="card-container">
+            <div class="card">
+                <h3>建村历史</h3>
+                <p>相传祖先于明朝永乐年间(公元1403-1424)随山西向北京移民之举由山西迁移至此，建立了这座韩氏聚居之地。</p>
+                <p>为抵御北方少数民族，明正德十年（1515年），爨底下村一世祖韩甫金、韩甫银、韩甫仓三兄弟奉命自沿河城到爨里口守关，逐渐繁衍发展，形成了韩氏聚族而居的爨底下村。</p>
+                <p>爨底下最初的发展得益于明正德十四年(1519年)修建的古驿道。沿古驿道东南行6km，进入斋堂川；向西北4km经柏峪村，越黄草梁天津关，进入怀来县麻黄峪村，可达内蒙古草原。</p>
+                <p>自明代始，随着沿河城—黄草梁—洪水口—小龙门一线长城的修建，爨底下依其特殊的地理位置，成为通过爨里安口要隘抵达天津关关隘的必经之路，并逐渐发展成为过往商贾的重要落脚驿站，既而形成古村聚落。</p>
+                <p>明代建村，清代沿袭明制，爨里安口归沿河口下守备所管辖。同知六年（1876年），爨底下划归宛平县齐家司智力，兵丁转军为民。抗日战争时期，宛平县一区抗日民主政府迁至爨底下。</p>
+            </div>
+
+            <div class="card">
+                <h3>历史事件</h3>
+                <p>金代，爨底下金代称南暗口，据宋代《契丹国志记载》，宋宣和四年(1123)十二月底，金军兵分三路工大辽南京(今北京)，大将粘罕自南暗口道出奇兵，直逼城下，萧太后遁。</p>
+                <p>明代，爨里口明正德十年(1515)建，有正城一道。爨里口，为天津关所辖。</p>
+                <p>清代，建龙王伏魔庙。大清康熙岁次乙丑七月(康熙四年，1665，)由村民集资修建，次年(1666)建成。雍正二年(1724)孟冬月庄严圣像。雍正二年塑像高造庄严，修造山门、禅房，俱系保定府口县人刘喜山供给价银三十六两整。乾隆十一年(1746)、道光四年(1824)、道光七年(1827)、同治六年(1867)等均有修缮。嘉庆十五年(1810)植侧柏一株。2002年重修。</p>
+                <p>民国，爨底下干民工年间成立剧团，演出“文明戏”，内容有宣传戒毒(大烟)、文明结婚等。</p>
+                <p>1958年，全国推行简经汉字之后，爨底下人觉得爨字笔画多，不好写，于是自行改“爨”为“川”。“爨”字并没有简化。1998年11月，爨底下被公布为区文物保护单位。</p>
+                <p>1998年，树立爨底下标志碑。碑阳“爨”字，由著名书法家杨再春先生书写，碑文由刘义全撰文，李文启书丹，李贵明刻字。1998年，北京市政府将开发保护爨底下列入67件为群众所做实事之一，市区投入大量资金，改善该村的软硬件设施。1999年7月，门头沟区人民政府发布第一号通告，对爨底下的保护做出了严格而具体的规定，并成立了爨底下文物管理所。1999年12月，由天津杨柳青画社出版的《彭世强画民居》画册出版。</p>
+                <p>1999年6月，由中国建筑国业出版社出版发行的《北京古山村--爨底下》一书面世。该书系国家自然科学基金资助项目，业祖润等著，合作单位：北京市文物局，门头沟区政府、北京市建筑工程学院。</p>
+                <p>1999年6月，原中国大百科全书出版副总编金常政，写诗赞颂爨底下：“兴林大火归爨下，错落民居是古村。满目青山图画里，明清陈迹最堪寻”。</p>
+                <p>2001年4月，中国著名古建筑专家罗哲文先生为爨底下题词：“爨底下古民居，保存得很是完整，建筑质量也很好，反映了北京这一地点的历史文化，很有特色。应当很好地加以保护，广泛宣传，引起各方面的重视才好。”并有另外两幅题词：“古老村落民居精华”“建筑艺术瑰宝，历史文化名村”。</p>
+                <p>2001年，爨底下公布为北京市文物保护单位。</p>
+                <p>2001年10月，在中央电视台“旅游观光农业金点子大赛”中荣获优秀创新奖。2000、2001年，爨底下被评为“首都文明旅游景区”，2002年，爨底下公布为“北京市历史文化保护区”。</p>
+                <p>2002年9月，中共北京市委书记贾庆林一行到爨底下进行调研。</p>
+                <p>2003年12月，“爨底下”和“爨”字牌商标由爨底下管理外注册，涉及商品多种。</p>
+                <p>2003年4月，《市场报》报道了著名美术家吴冠中先生来爨底下作画、撰文的消息，撰文的题目是《爨底下君知否？》；写生《桃花依旧笑春风》刊登在《北京古山村-爨底下》画册上；吴先生称爨底下是“北京居民的周口店”，“仿佛是从火山灰挖也不的意大利庞贝古城”。</p>
+                <p>2003年11月，建设部和国家文物局授予北京市门头沟区斋堂镇爨底下第一批“中国历史文化名村”称号。2004年1月，原国务院副总理钱其琛一行来到爨底下视察，并签名留念。</p>
+                <p>2004年6月，“中国历史名村-一爨底下”举行揭牌仪式。古建专家罗哲文、郑孝燮到会。</p>
+                <p>2005年3月，《北京娱乐信报》所道了爨底下发现清光绪三十二年(1906)出版的小学修身课本。2005年9月，“中国最具旅游价值传统村落”在爨底下举行授牌仪式。</p>
+                <p>2007年10月，村委会主任王秀莲作为“十七大”代表，出席“十七大”会议。</p>
+            </div>
+        </div>
+    </section>
+</div>
+
+<div class="container">
+    <section>
+        <h2>环境格局</h2>
+        <div class="card-container">
+            <div class="card">
+                <h3>村落选址</h3>
+                <p>爨底下村坐落在南北两座大山夹出的沟谷北侧，卧于龙头山的南侧山坡之上，随山势呈扇形铺开。背靠龙山，面朝小片开阔地，南有金蟾山为朝山，周围群山抱，是中国文化传统中的理想建村之地。这样的选址可以使得村中建筑在山地有限的条件中获得最好的采光以及通风条件，节约土地，获得更多耕地，并且可以有效地防洪排水。</p>
+            </div>
+            
+            <div class="card">
+                <h3>村落格局</h3>
+                <p>爨底下村整体上分为上下台面，以龙头山为中心沿展出一组放射状扇面形建筑群体，村内道路趋山而行，上下两个台面分别有一条平行于等高线的主路，两条主路加上众多山道和院落之间的巷道四通八达。</p>
+            </div>
+            
+            <div class="card">
+                <h3>自然环境</h3>
+                <p>爨底下村位于太行山脉的深山峡谷中，“背靠龙头浸水，前照金蟾望月”，群山环绕，冠带之水，绕村而流。上有古栈道、双龙洞，下有门插岭，还有神龟啸天、蝙蝠献福、佛影照庄、笔架、笔锋等自然景观。</p>
+            </div>
+        </div>
+    </section>
+</div>
+
+<div class="container">
+    <section>
+        <h2>物质文化遗产</h2>
+        <p>爨底下村保存了大量珍贵的历史建筑，展现了这座古村落的独特风貌。</p>
+        
+        <div class="card-container">
+            <div class="card clickable-item">
+                <a href="historical-buildings.html">
+                    <h3>古建筑</h3>
+                    <p>· 清代民居</p>
+                    <p>· 龙王伏魔庙</p>
+                </a>
+            </div>
+        </div>
+    </section>
+</div>
+
+<div class="container">
+    <section>
+        <h2>民俗文化</h2>
+        <h3>唱蹦蹦戏</h3>
+        <p>爨底下村在清代及民国时期也有过戏班子，剧种为蹦蹦戏。至今村里还流行着有关当年唱蹦蹦戏的顺口溜“唱得精韩晓耕，唱得对韩晓瑞，扮得俊韩晓印，唱得瞎韩晓花。”充满了生活情趣，格外朴实。</p>
+    </section>
+</div>
+
+
+
+<script>
+    // 为移动设备优化点击体验
+    document.querySelectorAll('.clickable-item').forEach(item => {
+        item.addEventListener('click', function(e) {
+            // 确保点击的是链接时才跳转
+            if (e.target.tagName !== 'A' && this.querySelector('a')) {
+                this.querySelector('a').click();
+            }
+        });
+        
+        // 添加触摸反馈
+        item.addEventListener('touchstart', function() {
+            this.style.transform = 'translateX(5px)';
+            this.style.backgroundColor = 'rgba(211, 167, 106, 0.3)';
+        });
+        
+        item.addEventListener('touchend', function() {
+            this.style.transform = '';
+            this.style.backgroundColor = '';
+        });
+    });
+</script>
+</body>
+</html>

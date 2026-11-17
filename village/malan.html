@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>马栏村 - 历史文化名村</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #8B6B3D; /* 深棕色 */
+            --secondary-color: #B38B6B; /* 黄棕色 */
+            --accent-color: #D4A76A; /* 金色 */
+            --dark-color: #5C3A21; /* 深褐色 */
+            --light-color: #F5E8D0; /* 米黄色 */
+            --text-color: #4A3A2A; /* 深棕灰色 */
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        body {
+            font-family: 'Noto Serif SC', 'PingFang SC', 'Microsoft YaHei', serif;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0;
+            color: var(--text-color);
+            line-height: 1.8;
+            background-color: #F9F5ED;
+            background-image: url('data:image/svg+xml;utf8,<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path fill="%23D4A76A" fill-opacity="0.03" d="M0 0h100v100H0z"/></svg>');
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--dark-color), var(--primary-color));
+            color: #F5E8D0;
+            padding: 3rem 2rem;
+            text-align: center;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow);
+            border-radius: 0 0 10px 10px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 10px;
+            background: linear-gradient(90deg, transparent, var(--accent-color), transparent);
+            opacity: 0.5;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin: 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            position: relative;
+            z-index: 1;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-top: 0.5rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .container {
+            background: var(--light-color);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            margin-bottom: 2rem;
+            border: 1px solid rgba(139, 107, 61, 0.2);
+        }
+        
+        h2 {
+            color: var(--dark-color);
+            margin-top: 0;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--primary-color);
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+        
+        h3 {
+            color: var(--primary-color);
+            margin-top: 1.5rem;
+            font-size: 1.4rem;
+            font-weight: 600;
+        }
+        
+        ul {
+            padding-left: 1.5rem;
+        }
+        
+        li {
+            margin-bottom: 0.8rem;
+            position: relative;
+            list-style-type: none;
+            padding-left: 1.5rem;
+        }
+        
+        li:before {
+            content: "•";
+            color: var(--accent-color);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+            font-size: 1.2em;
+        }
+        
+        .card-container {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            margin: 1.5rem 0;
+        }
+        
+        .card {
+            flex: 1 1 300px;
+            background: rgba(255, 255, 255, 0.7);
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease;
+            border: 1px solid rgba(139, 107, 61, 0.2);
+            backdrop-filter: blur(2px);
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        .card h3 {
+            margin-top: 0;
+            color: var(--dark-color);
+        }
+        
+        .more-link {
+            display: inline-block;
+            color: var(--dark-color);
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 1rem;
+            padding: 0.5rem 1rem;
+            border: 2px solid var(--primary-color);
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            background: rgba(180, 140, 80, 0.1);
+        }
+        
+        .more-link:hover {
+            background-color: var(--primary-color);
+            color: var(--light-color);
+            text-decoration: none;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 1.5rem;
+            color: var(--primary-color);
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(139, 107, 61, 0.3);
+            margin-top: 1rem;
+        }
+        
+        strong {
+            color: var(--dark-color);
+            font-weight: 700;
+        }
+        
+        /* 新增的可点击列表项样式 */
+        .clickable-item {
+            cursor: pointer;
+            transition: all 0.2s ease;
+            padding: 0.5rem;
+            border-radius: 4px;
+        }
+        
+        .clickable-item:hover {
+            background-color: rgba(211, 167, 106, 0.2);
+            transform: translateX(5px);
+        }
+        
+        .clickable-item a {
+            color: inherit;
+            text-decoration: none;
+            display: block;
+        }
+        
+        .clickable-item a:hover {
+            text-decoration: underline;
+            text-decoration-color: var(--accent-color);
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 0 1rem;
+            }
+            
+            header {
+                padding: 2rem 1rem;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .container {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<header>
+    <h1>马栏村</h1>
+    <div class="subtitle">历史文化名村 · 传统村落保护典范</div>
+</header>
+
+<div class="container">
+    <section>
+        <h2>历史文化</h2>
+        <p>马栏村是一座具有北方典型山地村落特色的红色文化村。马栏村位于北京市门头沟区斋堂镇辖区内，地处太行山余脉，平均海拔600米。村域面积13.68平方公里，南北长1000米，东西宽200米，村落面积19277.5亩，其中耕地面积652亩。马栏村依山势而建，以龙王庙为中心，沿山体呈带型展开，是北方少有的沿水街逐渐发展形成的村落。村落始建于元代，原为圈养马匹之地，因而得名"马栏"。抗日战争时期，马栏村为萧克将军、邓华将军所领导的冀热察挺进军司令部驻地，村内有大量红色文化遗存。</p>
+
+        <div class="card-container">
+            <div class="card">
+                <h3>建村历史</h3>
+                <p>马栏村始建于元代。明代，马栏村属于顺天府宛平县，为圈放马匹之地，故名马栏。明万历年间，有养马与管理马匹的马官八名。明永乐年间，迁灵桂川马栏村安家。民国二十六年（1937年）11月7日，中共中央决定成立冀热察军区。民国二十七年（1938年）2月，萧克将军在斋堂组建了冀热察挺进军。民国二十七年（1938年）3月，中国共产党在门头沟区境西部创建了以斋堂川为中心建立了宛平县抗日民主政府，并建立了马栏村第一届党支部。民国二十八年（1939年）10月，冀热察挺进军司令部以及被服厂、枪修所、医疗所等部门、单位进驻马栏村。</p>
+            </div>
+
+            <div class="card">
+                <h3>历史事件</h3>
+                <p>1938年初，共产党员李春亭来到马栏，发展进步青年入党，建立村党支部。1939年1月下旬，萧克和宋时轮、邓华、马辉之、姚依林等同志商量着手组建挺进军的工作。根据党中央、八路军总部的决定和一二〇师、晋察冀军区的部署，于1939年2月7日，八路军冀热察挺进军在平西的三坡（现称野三坡）正式成立，编制序列直属八路军总部，由晋察冀军区代管。同时，还成立了萧克、马辉之、伍晋南、宋时轮（后为程世才）、邓华等5人组成的军政委员会，成立了由马辉之为书记的中共冀热察区党委。挺进军由萧克任司令员兼军政委员会书记，程世才任参谋长，伍晋南任政治部主任。</p>
+            </div>
+        </div>
+    </section>
+</div>
+
+<div class="container">
+    <section>
+        <h2>环境格局</h2>
+        <p>马栏村地处太行山脉，群山环抱，北近斋堂水库，西眺西达摩自然风景区，东与双龙峡自然风景区相隔，选址具有典型的背后有山可靠，面前有水环绕的有利格局。马栏村依山势而建，以龙王庙为中心，受地形限制，沿山体呈带型展开，为北方少有的沿水街逐渐发展形成的村落。村庄位于清水河南岸，地势复杂，高差较大，道路不成系统。部分道路有硬化，质量一般。</p>
+    </section>
+</div>
+
+<div class="container">
+    <section>
+        <h2>物质文化遗产</h2>
+        <p>马栏村保存了大量珍贵的物质文化遗产，包括明清时期的传统民居、红色革命遗址以及各类历史遗迹，展现了村落丰富的历史文化内涵。</p>
+        
+       <div class="card-container">
+    <div class="card clickable-item">
+        <h3>历史建筑</h3> <!-- 标题不再需要链接 -->
+        <a href="malan/lw.html"><p>·龙王观音禅林大殿</p></a>
+        <a href="malan/gx.html"><p>·古戏楼</p></a>
+        <a href="malan/shy.html"><p>·四合院若干</p></a>
+    </div>
+    
+    <div class="card clickable-item">
+        <h3>不可移动文物</h3>
+        <p>·石桥石碾子</p>
+        <p>·溪桥街（12座）</p>
+    </div>
+    
+    <div class="card clickable-item">
+        <a href="revolutionary-sites.html">
+            <h3>红色遗址</h3>
+                <a href="malan/jrc.html"><p>·冀热察挺进</p></a>
+
+        </a>
+    </div>
+</div>
+    </section>
+</div>
+
+<div class="container">
+    <section>
+        <h2>民俗文化</h2>
+        <p>马栏村拥有传承悠久的历史和特色红色文化精神，村委会邀请著名作曲家、作词家根据马栏村特色、文化历史和对未来生活的畅想创作了马栏村歌一-《我的马栏村》。村中集结在村居民形成了一支文艺表演队伍，利用农闲业余时间进行文艺排演，有舞蹈表演、大鼓表演等。</p>
+    </section>
+</div>
+
+
+
+<script>
+    // 为移动设备优化点击体验
+    document.querySelectorAll('.clickable-item').forEach(item => {
+        item.addEventListener('click', function(e) {
+            // 确保点击的是链接时才跳转
+            if (e.target.tagName !== 'A' && this.querySelector('a')) {
+                this.querySelector('a').click();
+            }
+        });
+        
+        // 添加触摸反馈
+        item.addEventListener('touchstart', function() {
+            this.style.transform = 'translateX(5px)';
+            this.style.backgroundColor = 'rgba(211, 167, 106, 0.3)';
+        });
+        
+        item.addEventListener('touchend', function() {
+            this.style.transform = '';
+            this.style.backgroundColor = '';
+        });
+    });
+</script>
+</body>
+</html>

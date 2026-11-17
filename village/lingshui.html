@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>灵水村 - 科举文化基地</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #8B6B3D; /* 深棕色 */
+            --secondary-color: #B38B6B; /* 黄棕色 */
+            --accent-color: #D4A76A; /* 金色 */
+            --dark-color: #5C3A21; /* 深褐色 */
+            --light-color: #F5E8D0; /* 米黄色 */
+            --text-color: #4A3A2A; /* 深棕灰色 */
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        body {
+            font-family: 'Noto Serif SC', 'PingFang SC', 'Microsoft YaHei', serif;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0;
+            color: var(--text-color);
+            line-height: 1.8;
+            background-color: #F9F5ED;
+            background-image: url('data:image/svg+xml;utf8,<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path fill="%23D4A76A" fill-opacity="0.03" d="M0 0h100v100H0z"/></svg>');
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--dark-color), var(--primary-color));
+            color: #F5E8D0;
+            padding: 3rem 2rem;
+            text-align: center;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow);
+            border-radius: 0 0 10px 10px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 10px;
+            background: linear-gradient(90deg, transparent, var(--accent-color), transparent);
+            opacity: 0.5;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin: 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            position: relative;
+            z-index: 1;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-top: 0.5rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .container {
+            background: var(--light-color);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            margin-bottom: 2rem;
+            border: 1px solid rgba(139, 107, 61, 0.2);
+        }
+        
+        h2 {
+            color: var(--dark-color);
+            margin-top: 0;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--primary-color);
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+        
+        h3 {
+            color: var(--primary-color);
+            margin-top: 1.5rem;
+            font-size: 1.4rem;
+            font-weight: 600;
+        }
+        
+        ul {
+            padding-left: 1.5rem;
+        }
+        
+        li {
+            margin-bottom: 0.8rem;
+            position: relative;
+            list-style-type: none;
+            padding-left: 1.5rem;
+        }
+        
+        li:before {
+            content: "•";
+            color: var(--accent-color);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+            font-size: 1.2em;
+        }
+        
+        .card-container {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            margin: 1.5rem 0;
+        }
+        
+        .card {
+            flex: 1 1 300px;
+            background: rgba(255, 255, 255, 0.7);
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease;
+            border: 1px solid rgba(139, 107, 61, 0.2);
+            backdrop-filter: blur(2px);
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        .card h3 {
+            margin-top: 0;
+            color: var(--dark-color);
+        }
+        
+        .more-link {
+            display: inline-block;
+            color: var(--dark-color);
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 1rem;
+            padding: 0.5rem 1rem;
+            border: 2px solid var(--primary-color);
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            background: rgba(180, 140, 80, 0.1);
+        }
+        
+        .more-link:hover {
+            background-color: var(--primary-color);
+            color: var(--light-color);
+            text-decoration: none;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 1.5rem;
+            color: var(--primary-color);
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(139, 107, 61, 0.3);
+            margin-top: 1rem;
+        }
+        
+        strong {
+            color: var(--dark-color);
+            font-weight: 700;
+        }
+        
+        /* 新增的可点击列表项样式 */
+        .clickable-item {
+            cursor: pointer;
+            transition: all 0.2s ease;
+            padding: 0.5rem;
+            border-radius: 4px;
+        }
+        
+        .clickable-item:hover {
+            background-color: rgba(211, 167, 106, 0.2);
+            transform: translateX(5px);
+        }
+        
+        .clickable-item a {
+            color: inherit;
+            text-decoration: none;
+            display: block;
+        }
+        
+        .clickable-item a:hover {
+            text-decoration: underline;
+            text-decoration-color: var(--accent-color);
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 0 1rem;
+            }
+            
+            header {
+                padding: 2rem 1rem;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .container {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<header>
+    <h1>灵水村</h1>
+    <div class="subtitle">科举文化基地 · 中国历史文化名村</div>
+</header>
+
+<div class="container">
+    <section>
+        <h2>历史文化</h2>
+        <p>灵水村位于北京市门头沟区斋堂镇，距离北京市中心78km，距离109国道4km。整个村落面积约6.4万平方米，略呈长方形，平均海拔430m，地势西北高，东南低。灵水村现有200余户700余人。该村四周群山环绕，风光秀美，有东岭石人、北山翠柏、柏抱桑榆等“灵水八景”。村内还保存有大量的明清时期的寺庙、民居院落等建筑，整体格局和传统风貌均保存较为完好。2005年11月，被公布为“中国历史文化名村”(第二批);2012年，被公布为“中国传统村落”(第一批)。</p>
+
+        <div class="card-container">
+            <div class="card">
+                <h3>建村历史</h3>
+                <p>灵水村历史悠久，建村不晚于辽金时期。明代沈榜所著《宛署杂记》记载：“灵泉寺，在凌水村，起自汉时。”若此说属实，则灵泉寺距今至少已有1800年。斋堂有民谚：深山古寺炼仙丹（灵岳寺），无数和尚把饭餐（斋堂），一碗凉水治好病（灵水），老王死在平顶山（燕家台村）。也可见灵水村历史源远流长。</p>
+                <p>灵水村因水得名。据说灵水村原来有72眼水井，村民认为村子的水好，有灵性。明代，该村名为“凌水村”，民间传说有时也称它为“冷水村”、“铃水村”。据《宛署杂记》记载，村内南海火龙王庙南侧有“八角龙池，石生八角，中虚若池，泉出其底，例而甘，古产龙之所”，因有神灵护佑。故名为“灵水”。民间流传着这样的俗语：“灵水一碗水，洗目则明，饮之止痛”，可见灵水村的水是很灵验的。</p>
+                <p>明清时期，村落规模不断扩大，曾达到三百多户，人丁二千有余。一方面，明清时期，灵水村文风昌盛，先后出了进士2名，举人24名，监生10名。其中村中有名的举人刘懋恒，祖上即居住在灵水村，他的父亲刘应全在崇祯年间是明代镇边城的军服官吏，清代顺治初年捐献干金的资产来帮助贫困百姓，后在朝中当大官，可见在明代灵水村就已经有一定的规模。其他的文人取得成功后也纷纷回来建设宅院，促进了村落的发展。另一方面，因灵水村距离沟通北京和山西的古“西山大道”较近，明清时期的商贸活动亦较发达，村内曾有十几家商号，其中最著名的为号称“八大堂”的三元堂、大清号、荣德泰、全义兴、全义号、三义隆、德盛堂和济善堂八家。</p>
+            </div>
+
+            <div class="card">
+                <h3>历史事件</h3>
+                <p>髽髻山战役期间，卫立煌部进入斋堂川后，将14军军部设在了东胡林村，十师的师部（师长李默庵）设在了灵水村，具体地址就在刘增广家。第83师驻煤窝吕家村，第85师驻金鸡台村。为了解决部队的军需给养问题，卫立煌委派当时的宛平县八区区长，灵水人谭天元为宛平县长，要求他动员组织地方力量支援抗战。谭天元积极工作，向斋堂川各村要人去支援前线，并且派煤窝的吕玉宝牵头，组成一支几十个人的游击队，按照卫立煌的战略部署，到当时侵华日军的后方门城镇一带去进行骚扰，以牵制敌人的兵力。</p>
+                <p>在此期间，中共宛平地下党组织积极发动群众，帮助国民党正规军抗击日军。协助他们征粮征款，出夫出牲口，组织当地群众慰问官兵，抢救伤员，抬担架，运送给养。进步青年彭城（门头沟区雁翅镇太子墓村人）为卫立煌部充当向导，帮助部队熟悉当地的地形。杜存训、史梦兰、宋恩庆、杨济之等人与驻在灵水村的十师师部联系，组织起由当地民众组成的抗日宣传大队，去往十师进行宣传动员，鼓舞将士们的士气。参加者有几十人，主要是当地的教员和高小毕业生，其中以灵水高小的人数最多。十师政治部对于他们的抗日热情给予高度认可，给他们发了袖标。宣传队成立以后便分组前往各村进行抗日宣传，杜存训等人还募捐了几百斤梨，用牲口驮着送往十师驻地灵水村，受到了师长李默庵的热情接待。在那个战火纷飞的特殊时期，灵水村人民积极支援抗日部队，抬担架、抢救伤员、运送给养，慰问官兵，热情十分高涨。</p>
+            </div>
+        </div>
+    </section>
+</div>
+
+<div class="container">
+    <section>
+        <h2>环境格局</h2>
+        <div class="card-container">
+            <div class="card">
+                <h3>村落选址</h3>
+                <p>灵水村三面环山，整个地势西高东低，西北靠莲花山，东望石人山，绵延的山脉构成了对村落的围合，村落东侧山势较缓，且布置村落人口，便于迎迓朝阳，被称为“紫气东来”，整体环境既有“藏风聚气”之形，又有“东进西收”之势。当地村民相信这是村落选址的独特之处，是非常吉利的福佑村子的“好风水”。</p>
+                <p>村子的选址使村子获得了良好的居住环境和生产条件：村落西北侧的莲花山可有效抵御冬季的寒风，东南侧相对较低的地势则有利于获得日照，背风向阳的环境格局使其获得了良好的小气候；村落集中在山脚下地势稍高的地方建设，既避免了洪涝灾害，又保证了与外界的便捷交通；村内有两条河道穿过，雨季可将山洪及时地疏导到村外；村落周围的坡地则满布梯田。此外，便捷的外部交通条件是灵水村选址的主要特点之一。因村北可与古“西山大道”连通，旧时远途跋涉的商人可取道该村，客观上促进了村落在明清时期的发展。</p>
+            </div>
+            
+            <div class="card">
+                <h3>村落格局</h3>
+                <p>灵水村沿三座山的山麓展开，被河道及沿河道布置的两条主要街道自然地分成了三大部分。其中，两条主要街道之间的部分为村内面积最大、地势相对平缓的核心地块。该地块恰处于莲花山东侧，随着地势自东向西逐渐升高而形成了层层抬升的台地，村落的主体部分即建在这层层台地之上。从南面的山坡上看，该部分形如巨龟卧于山脚下的高阜之地，凸显了其核心地位，村落中现存的属于村中大姓刘姓的明代宅院群即集中分布在这里。宅院群西侧建有一道较高的围墙，而最东侧，则由位于地势相对较高处的宅院的外墙连成一道防御屏障，南面和北面分别临着村落的主要街巷中街、后街，沿街由围墙及房屋外墙形成连贯的界面，形成了明显带有防御功能的村落核心。两条主要街道外侧的部分，地形坡度较大，用地条件相对较差，各建筑院落多沿等高线展开，进深方向垂直等高线布置，面积相对较小，多属于村中小姓。</p>
+            </div>
+        </div>
+    </section>
+</div>
+
+<div class="container">
+    <section>
+        <h2>物质文化遗产</h2>
+        <p>灵水村保存了大量珍贵的历史建筑，展现了这座科举文化基地的独特风貌。</p>
+        
+        <div class="card-container">
+            <div class="card clickable-item">
+                <a href="historical-buildings.html">
+                    <h3>寺庙与民居</h3>
+                    <p>· 灵泉寺</p>
+                    <p>· 明清民居院落</p>
+                </a>
+            </div>
+        </div>
+    </section>
+</div>
+
+<div class="container">
+    <section>
+        <h2>民俗文化</h2>
+        <h3>灵水村秋粥节</h3>
+        <p>灵水村的秋粥也叫举人粥，因纪念举人刘懋恒的义举而得名，是县级非物质文化遗产。清康熙年间，斋堂川发生水灾，灵水村的刘懋恒及其父刘应全捐谷1700石，赈济灾民；康熙二十一年(1682年)，斋堂川再次发生水灾，刘懋恒又捐出粮食1000石。当时刘家搭起了粥棚，熬米舍粥，使受灾村民渡过了灾荒。为了纪念此事，灵水村村民就在每年立秋这天“共喝秋粥”。</p>
+        <p>既是众人共喝秋粥，人们便共同出资，置办了几口大锅，定为村中公产。立秋之日，全村各户集粮，你出小米，我出小豆，他出核桃仁，家贫的就给挑上几担水，捡几捆柴。在大街上搭起粥棚，支起大锅，村民热情参与，共同煮粥，共同喝粥。过路之人，外村之人，也可以喝上两碗。大家此时边喝粥边聊天，交流生产经验，传播商业信息。邻里促膝谈心，消除往日的隔阂，增进友情。后来，秋粥节活动的内容不断增加，如花会表演、演唱山乡戏曲等，秋粥节逐渐成了灵水村的欢乐节日，用来纪念灵水村历史上出现的众多举人、官宦及有名气的读书人，承续流传下来的多项良好的民俗民风，倡导尊师重教、读书上进、福荫乡里、报效国家的传统。一锅热腾腾、香喷喷的杂粮粥，大家共享，其情浓浓，其乐融融，展现出一幅山村乡亲睦邻图。灵水村村民王增富有诗赞曰：“乡情浓浓举人粥，飘香邻里泯恩仇。一朝取得功名就，回头再思举人粥。”</p>
+        <p>所以，如今的“灵水秋粥节”并不只是村民在一起吃杂粮粥那样简单，而是以优秀传统民俗为主要内容的传统文化的综合体，是灵水村优秀传统文化的集中表现。在和谐邻里、科学种田、环境保护等方面都起到了很好的效果，也有助于丰富村民的文化生活，特别是对那些优秀的民风民俗的传承至今仍有积极的意义。时隔百年，21世纪的人们却依旧虔诚地把熬秋粥、喝秋粥当作一项仪式来传承。也许是因为灵山秀水的润养，灵水村世代出举人，成了斋堂川公认的举人村。从明、清、民国到中华人民共和国成立后，进士、举人、学子不断。因为村里多文化人，灵水村有了许多特别的规矩，“诗书济世”“生财有道”“君子不争”“猪羊圈养”“龙池三禁”“核桃晚打”“捐资赈灾”“共喝秋粥”共称灵水八德，灵水八德深受儒家文化影响，也代表着灵水村浓厚的人文底蕴。</p>
+        <h3>九曲黄河灯</h3>
+        <p>元宵节转灯，是灵水村流传了七八百年的民俗。1937年因为抗日战火戛然而止。这次转灯会，是80年来的头一遭。民国时期灯阵的灯杆，是四根高粱秆子捆在一起，上面顶的灯碗是黄泥做的，里面盛灯油，棉花做成灯捻子，外面灯罩是纸糊的，啥颜色都有。灯阵的布局，横竖成行，各19，总数361盏灯，加上中心一盏天灯，门口三盏灯，共365盏灯，代表一年三百六十五天。因为灯阵里有九个“万字不到头”的图案，所以又叫万字阵，也是祈福的意思。按照老例，先由一队村民到村里的各座庙宇去“请神”，以求“人神同乐”。文昌帝君、魁星、天仙圣母的各路神仙都到场后，再开启盛大的转灯祈福活动。</p>
+    </section>
+</div>
+
+    
+
+<script>
+    // 为移动设备优化点击体验
+    document.querySelectorAll('.clickable-item').forEach(item => {
+        item.addEventListener('click', function(e) {
+            // 确保点击的是链接时才跳转
+            if (e.target.tagName !== 'A' && this.querySelector('a')) {
+                this.querySelector('a').click();
+            }
+        });
+        
+        // 添加触摸反馈
+        item.addEventListener('touchstart', function() {
+            this.style.transform = 'translateX(5px)';
+            this.style.backgroundColor = 'rgba(211, 167, 106, 0.3)';
+        });
+        
+        item.addEventListener('touchend', function() {
+            this.style.transform = '';
+            this.style.backgroundColor = '';
+        });
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>沿河城村 - 军事要塞古村落</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #8B6B3D; /* 深棕色 */
+            --secondary-color: #B38B6B; /* 黄棕色 */
+            --accent-color: #D4A76A; /* 金色 */
+            --dark-color: #5C3A21; /* 深褐色 */
+            --light-color: #F5E8D0; /* 米黄色 */
+            --text-color: #4A3A2A; /* 深棕灰色 */
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        body {
+            font-family: 'Noto Serif SC', 'PingFang SC', 'Microsoft YaHei', serif;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0;
+            color: var(--text-color);
+            line-height: 1.8;
+            background-color: #F9F5ED;
+            background-image: url('data:image/svg+xml;utf8,<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path fill="%23D4A76A" fill-opacity="0.03" d="M0 0h100v100H0z"/></svg>');
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--dark-color), var(--primary-color));
+            color: #F5E8D0;
+            padding: 3rem 2rem;
+            text-align: center;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow);
+            border-radius: 0 0 10px 10px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 10px;
+            background: linear-gradient(90deg, transparent, var(--accent-color), transparent);
+            opacity: 0.5;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin: 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            position: relative;
+            z-index: 1;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-top: 0.5rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .container {
+            background: var(--light-color);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            margin-bottom: 2rem;
+            border: 1px solid rgba(139, 107, 61, 0.2);
+        }
+        
+        h2 {
+            color: var(--dark-color);
+            margin-top: 0;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--primary-color);
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+        
+        h3 {
+            color: var(--primary-color);
+            margin-top: 1.5rem;
+            font-size: 1.4rem;
+            font-weight: 600;
+        }
+        
+        ul {
+            padding-left: 1.5rem;
+        }
+        
+        li {
+            margin-bottom: 0.8rem;
+            position: relative;
+            list-style-type: none;
+            padding-left: 1.5rem;
+        }
+        
+        li:before {
+            content: "•";
+            color: var(--accent-color);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+            font-size: 1.2em;
+        }
+        
+        .card-container {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            margin: 1.5rem 0;
+        }
+        
+        .card {
+            flex: 1 1 300px;
+            background: rgba(255, 255, 255, 0.7);
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease;
+            border: 1px solid rgba(139, 107, 61, 0.2);
+            backdrop-filter: blur(2px);
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        .card h3 {
+            margin-top: 0;
+            color: var(--dark-color);
+        }
+        
+        .more-link {
+            display: inline-block;
+            color: var(--dark-color);
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 1rem;
+            padding: 0.5rem 1rem;
+            border: 2px solid var(--primary-color);
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            background: rgba(180, 140, 80, 0.1);
+        }
+        
+        .more-link:hover {
+            background-color: var(--primary-color);
+            color: var(--light-color);
+            text-decoration: none;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 1.5rem;
+            color: var(--primary-color);
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(139, 107, 61, 0.3);
+            margin-top: 1rem;
+        }
+        
+        strong {
+            color: var(--dark-color);
+            font-weight: 700;
+        }
+        
+        /* 新增的可点击列表项样式 */
+        .clickable-item {
+            cursor: pointer;
+            transition: all 0.2s ease;
+            padding: 0.5rem;
+            border-radius: 4px;
+        }
+        
+        .clickable-item:hover {
+            background-color: rgba(211, 167, 106, 0.2);
+            transform: translateX(5px);
+        }
+        
+        .clickable-item a {
+            color: inherit;
+            text-decoration: none;
+            display: block;
+        }
+        
+        .clickable-item a:hover {
+            text-decoration: underline;
+            text-decoration-color: var(--accent-color);
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 0 1rem;
+            }
+            
+            header {
+                padding: 2rem 1rem;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .container {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<header>
+    <h1>沿河城村</h1>
+    <div class="subtitle">军事要塞古村落 · 北京市文物保护单位</div>
+</header>
+
+<div class="container">
+    <section>
+        <h2>历史文化</h2>
+        <p>沿河城村位于门头沟区西北崇山峻岭的大峡谷中，刘家峪沟和永定河的交汇处，历史上是重要的军事要塞。沿河城旧属真保镇紫荆关所辖，是塞外通往北京的要冲之一。1984年，"沿河城与敌台"被公布为北京市文物保护单位。</p>
+
+        <div class="card-container">
+            <div class="card">
+                <h3>建村历史</h3>
+                <p>沿河城村的形成与明代京城的军事防御有关。在建城之前，此处存有新石器时代居住痕迹。金时已经形成村落，因地处几条山沟流水汇入永定河入口处，扼守几道山口水口，故古时称为"三岔(汊)村"。明永乐四年(1406年)设千户所，景泰二年(1451年)设官守备。嘉靖二十三年到二十八年间(1544年-1549年)，明宣大总督翁万达主持修建了两道防线，设立了沿河城守备府。隆庆五年到万历二年(1571年-1574年)间，戚继光建空心敌台十五座，烽火台六座。万历六年(1578年)，朝廷下令建立沿河城。</p>
+            </div>
+
+            <div class="card">
+                <h3>历史事件</h3>
+                <p>1939年6月，日伪军300多人在汉奸带领下烧毁沿河城2000余间房屋。1940年秋，日本在沿河城村建立据点，筑起9个炮台。1938年后，八路军挺进斋堂川，成立抗日民主政权，沿河城学校教育有所发展，更名为"沿河城小学"，由师永茂、谭应富等担任教师，使用晋察冀边区政府印发的油印课本，学生除学习外还进行抗日宣传，参加站岗、放哨等活动。1944年日军撤出后，学校恢复。</p>
+            </div>
+        </div>
+    </section>
+</div>
+
+<div class="container">
+    <section>
+        <h2>环境格局</h2>
+        <div class="card-container">
+            <div class="card">
+                <h3>村落选址</h3>
+                <p>沿河城村坐落于南面城子陀与北面的永定河之间，依山傍水，整个村落地势较为平坦，南面地势有所升高，山脉与河流为古村落提供了天然的屏障。村落南面高于北面，南北城门为水门，历史上曾多次发生水灾，南门已经堵塞，只留下北门一个水门。</p>
+            </div>
+            
+            <div class="card">
+                <h3>村落格局</h3>
+                <p>沿河城作为军事要塞，建有城墙防御工事，整个村落被城墙完全包裹，呈现防御性集中式布局。东西长约420米，南北长约300米，周长1182米。东西设城门，南北设有券形水门，四角建有角台。主要街道为两条东西走向的前街和后街，与之相连有南北走向次巷道。</p>
+            </div>
+            
+            <div class="card">
+                <h3>自然环境</h3>
+                <p>沿河城所属斋堂镇，在门头沟区政府西北35公里处，永定河南岸。海拔高度384米，年均降雨量514毫米。地域面积81.2平方公里，其中耕地面积1326亩，林地面积6000亩，草场3000亩，水域面积1351.35亩。主要物产有苹果、核桃等。</p>
+            </div>
+        </div>
+    </section>
+</div>
+
+<div class="container">
+    <section>
+        <h2>物质文化遗产</h2>
+        <p>沿河城村保存了大量珍贵的军事防御设施和历史建筑，展现了这座军事要塞的独特风貌。</p>
+        
+        <div class="card-container">
+            <div class="card clickable-item">
+                <a href="historical-buildings.html">
+                    <h3>城墙与城门</h3>
+                    <p>· 城墙遗址</p>
+                    <p>· 东西城门</p>
+                    <p>· 南北水门</p>
+                    <p>· 四角角台</p>
+                </a>
+            </div>
+            
+            <div class="card clickable-item">
+                <a href="immovable-relics.html">
+                    <h3>军事设施</h3>
+                    <p>· 空心敌台15座</p>
+                    <p>· 烽火台6座</p>
+                    <p>· 防御工事遗址</p>
+                </a>
+            </div>
+            
+            <div class="card clickable-item">
+                <a href="revolutionary-sites.html">
+                    <h3>历史建筑</h3>
+                    <p>· 守备府遗址</p>
+                    <p>· 古民居建筑</p>
+                    <p>· 石板巷道</p>
+                </a>
+            </div>
+        </div>
+    </section>
+</div>
+
+<div class="container">
+    <section>
+        <h2>民俗文化</h2>
+        <h3>点灯花儿</h3>
+        <p>灯花儿为祭祀用品，一般为白纸制作，其形如灯，高约2寸，其燃灯部分如灯花儿，故称"点灯花儿"。点灯花儿多以辟邪除灾，求保佑，求平安为主旨。死了人办丧事要点灯花儿，过春节拜神要点灯花儿，初八吃过晚饭家中最多点108盏灯花儿。小孩满月后也有点灯花儿的，有祛病免灾之意。</p>
+    </section>
+</div>
+
+<footer>
+    <p>© 2023 沿河城村历史文化保护委员会 | 北京市门头沟区斋堂镇</p>
+</footer>
+
+<script>
+    // 为移动设备优化点击体验
+    document.querySelectorAll('.clickable-item').forEach(item => {
+        item.addEventListener('click', function(e) {
+            // 确保点击的是链接时才跳转
+            if (e.target.tagName !== 'A' && this.querySelector('a')) {
+                this.querySelector('a').click();
+            }
+        });
+        
+        // 添加触摸反馈
+        item.addEventListener('touchstart', function() {
+            this.style.transform = 'translateX(5px)';
+            this.style.backgroundColor = 'rgba(211, 167, 106, 0.3)';
+        });
+        
+        item.addEventListener('touchend', function() {
+            this.style.transform = '';
+            this.style.backgroundColor = '';
+        });
+    });
+</script>
+</body>
+</html>

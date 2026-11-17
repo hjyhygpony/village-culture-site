@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>门头沟传统村落</title>
+    <style>
+/* 基础样式 */
+body {
+    font-family: 'Microsoft YaHei', serif;
+    margin: 0;
+    padding: 0;
+    color: #4A2B0F;
+    text-align: center;
+    background-color: #F8F1E5;
+    background-image: url('https://img.freepik.com/free-photo/old-paper-texture_1194-5411.jpg');
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+/* 顶部滚动图片区域 */
+.image-slider {
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+    position: relative;
+    margin-bottom: 30px;
+    border-bottom: 8px solid #8B2E24;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+.slider-container {
+    display: flex;
+    transition: transform 0.8s ease;
+    height: 100%;
+}
+
+.slider-image {
+    min-width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: sepia(30%) contrast(110%);
+}
+
+/* 标题样式 */
+.header {
+    font-size: 36px;
+    font-weight: bold;
+    margin: 30px 0;
+    color: #8B2E24;
+    text-shadow: 2px 2px 4px rgba(139, 46, 36, 0.3);
+    letter-spacing: 2px;
+    position: relative;
+    display: inline-block;
+}
+
+.header:after {
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 3px;
+    background: #D4A76A;
+}
+
+/* 前言部分特殊样式 */
+.preface-container {
+    display: flex;
+    width: 80%;
+    max-width: 800px;
+    margin: 0 auto 40px;
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    border: 1px solid #B38B6D;
+    background: linear-gradient(to right, #F8F1E5, #F0E4D0);
+}
+
+.preface-title {
+    width: 90px;
+    background: linear-gradient(to bottom, #8B2E24, #6D1F1A);
+    color: #F0E4D0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    font-weight: bold;
+    writing-mode: vertical-rl;
+    letter-spacing: 8px;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+    padding: 20px 5px;
+}
+
+.preface-content {
+    flex: 1;
+    background-color: rgba(248, 241, 229, 0.8);
+    padding: 25px;
+    text-align: left;
+    line-height: 1.8;
+    font-size: 16px;
+    color: #4A2B0F;
+    border-left: 1px dashed #B38B6D;
+}
+
+.preface-content p {
+    margin-bottom: 15px;
+    text-indent: 2em;
+}
+
+/* 村落块状布局 */
+.village-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 20px;
+    width: 80%;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 15px;
+    background-color: rgba(248, 241, 229, 0.7);
+    border-radius: 8px;
+    border: 1px solid #B38B6D;
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.1);
+}
+
+.village-block {
+    background: linear-gradient(to bottom, #E8D5B5, #D4C0A1);
+    padding: 18px 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    font-size: 17px;
+    transition: all 0.4s;
+    color: #5C3A21;
+    border: 1px solid #B38B6D;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.village-block:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: #8B2E24;
+}
+
+.village-block:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0,0,0,0.3);
+    background: linear-gradient(to bottom, #D4C0A1, #C5B08B);
+    color: #3A1F0F;
+}
+
+/* 图片样式 */
+.village-block img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+/* 村子名称样式 */
+.village-name {
+    font-size: 16px;
+    color: #4A2B0F;
+    text-align: center;
+    margin-top: 5px;
+}
+
+/* 探秘按钮样式 */
+.explore-btn {
+    background: linear-gradient(to bottom, #8B2E24, #6D1F1A);
+    color: #F0E4D0;
+    border: none;
+    padding: 15px 50px;
+    font-size: 20px;
+    margin: 40px 0;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.4s;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+    letter-spacing: 2px;
+    position: relative;
+    overflow: hidden;
+}
+
+.explore-btn:hover {
+    background: linear-gradient(to bottom, #9B3E34, #7D2F2A);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+}
+
+.explore-btn:active {
+    transform: translateY(1px);
+}
+
+/* 底部文字样式 */
+.footer-text {
+    font-size: 18px;
+    color: #8B2E24;
+    margin: 30px 0;
+    font-weight: bold;
+    font-style: italic;
+    letter-spacing: 1px;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+       
+    </style>
+</head>
+<body>
+    <!-- 滚动图片区域 -->
+    <div class="image-slider">
+        <div class="slider-container" id="slider">
+            <img src="滚动图片1.jpg" class="slider-image" alt="图片3">
+            <img src="滚动图片2.jpg" class="slider-image" alt="图片4">
+            <img src="滚动图片3.jpg" class="slider-image" alt="图片5">
+            <img src="滚动图片4.jpg" class="slider-image" alt="图片6">
+            <img src="滚动图片5.jpg" class="slider-image" alt="图片7">
+        </div>
+    </div>
+    
+    <div class="header">门头沟传统村落</div>
+    
+    <!-- 特殊样式的前言部分 -->
+    <div class="preface-container">
+        <div class="preface-title">前言</div>
+        <div class="preface-content">
+门头沟区，作为京西历史文化的重要承载地，蕴藏着丰富的传统村落资源。这些村落不仅是北京乡土文明的活态见证，更是山水相依、人文共生的珍贵遗产。为深入挖掘其文化价值，推动数字化保护与传承，我们开展了门头沟12个传统村落的系统调查与数字化建档工作。  
+<p>本网站以"存续乡愁记忆，激活文化基因"为宗旨，通过图文、影像、数据等多维形式，全景呈现村落的历史脉络、建筑特色、民俗技艺与自然风貌。既为学术研究提供翔实资料，也为公众搭建走近乡土中国的桥梁。期待以科技之力守护传统根脉，让这些承载着乡民智慧与地域精神的古老村落，在数字时代焕发新生。</p>
+——守护遗产，传承不息 </div>
+    </div>
+    
+<!-- 村落块状网格布局 -->
+<div class="village-grid">
+    <div class="village-block"><img src="马栏村.jpg" alt="马栏村"><div class="village-name">马栏村</div></div>
+    <div class="village-block"><img src="爨底下村.jpg" alt="爨底下村"><div class="village-name">爨底下村</div></div>
+    <div class="village-block"><img src="琉璃渠村.jpg" alt="琉璃渠村"><div class="village-name">琉璃渠村</div></div>
+    <div class="village-block"><img src="三家店村.jpg" alt="三家店村"><div class="village-name">三家店村</div></div>
+    <div class="village-block"><img src="沿河城村.jpg" alt="沿河城村"><div class="village-name">沿河城村</div></div>
+    <div class="village-block"><img src="灵水村.jpg" alt="灵水村"><div class="village-name">灵水村</div></div>
+    <div class="village-block"><img src="黄岭西村.jpg" alt="黄岭西村"><div class="village-name">黄岭西村</div></div>
+    <div class="village-block"><img src="碣石村.jpg" alt="碣石村"><div class="village-name">碣石村</div></div>
+    <div class="village-block"><img src="西胡林村.jpg" alt="西胡林村"><div class="village-name">西胡林村</div></div>
+    <div class="village-block"><img src="苇子水村.jpg" alt="苇子水村"><div class="village-name">苇子水村</div></div>
+    <div class="village-block"><img src="千军台村.jpg" alt="千军台村"><div class="village-name">千军台村</div></div>
+    <div class="village-block"><img src="东石古岩村.jpg" alt="东石古岩村"><div class="village-name">东石古岩村</div></div>
+</div>
+    
+    <button class="explore-btn" onclick="window.location.href='map.html'">点击探秘</button>
+    
+    <script>
+        // 图片轮播功能
+        const slider = document.getElementById('slider');
+        const images = document.querySelectorAll('.slider-image');
+        let currentIndex = 0;
+        const imageCount = images.length;
+        
+        function slideImages() {
+            currentIndex = (currentIndex + 1) % imageCount;
+            slider.style.transform = `translateX(-${currentIndex * 100}%)`;
+        }
+        
+        // 每3秒切换一次图片
+        setInterval(slideImages, 3000);
+    </script>
+</body>
+</html>

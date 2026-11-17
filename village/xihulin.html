@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>西胡林村 - 中国传统村落</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #8B6B3D;
+            --secondary-color: #B38B6B;
+            --accent-color: #D4A76A;
+            --dark-color: #5C3A21;
+            --light-color: #F5E8D0;
+            --text-color: #4A3A2A;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        body {
+            font-family: 'Noto Serif SC', 'PingFang SC', 'Microsoft YaHei', serif;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0;
+            color: var(--text-color);
+            line-height: 1.8;
+            background-color: #F9F5ED;
+            background-image: url('data:image/svg+xml;utf8,<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path fill="%23D4A76A" fill-opacity="0.03" d="M0 0h100v100H0z"/></svg>');
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--dark-color), var(--primary-color));
+            color: #F5E8D0;
+            padding: 3rem 2rem;
+            text-align: center;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow);
+            border-radius: 0 0 10px 10px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 10px;
+            background: linear-gradient(90deg, transparent, var(--accent-color), transparent);
+            opacity: 0.5;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin: 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            position: relative;
+            z-index: 1;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-top: 0.5rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .container {
+            background: var(--light-color);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            margin-bottom: 2rem;
+            border: 1px solid rgba(139, 107, 61, 0.2);
+        }
+        
+        h2 {
+            color: var(--dark-color);
+            margin-top: 0;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--primary-color);
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+        
+        h3 {
+            color: var(--primary-color);
+            margin-top: 1.5rem;
+            font-size: 1.4rem;
+            font-weight: 600;
+        }
+        
+        p {
+            margin-bottom: 1rem;
+        }
+        
+        ul {
+            padding-left: 1.5rem;
+        }
+        
+        li {
+            margin-bottom: 0.8rem;
+            position: relative;
+            list-style-type: none;
+            padding-left: 1.5rem;
+        }
+        
+        li:before {
+            content: "•";
+            color: var(--accent-color);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+            font-size: 1.2em;
+        }
+        
+        .card-container {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            margin: 1.5rem 0;
+        }
+        
+        .card {
+            flex: 1 1 300px;
+            background: rgba(255, 255, 255, 0.7);
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease;
+            border: 1px solid rgba(139, 107, 61, 0.2);
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        .card h3 {
+            margin-top: 0;
+            color: var(--dark-color);
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 0 1rem;
+            }
+            
+            header {
+                padding: 2rem 1rem;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .container {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<header>
+    <h1>西胡林村</h1>
+    <div class="subtitle">中国传统村落 · 明御林军驻地</div>
+</header>
+
+<div class="container">
+    <h2>历史文化</h2>
+    
+    <h3>简介</h3>
+    <p>明御林军驻地</p>
+    <p>西胡林村历史悠久，辽时称胡家林村，明时分东、西二村，该村居西，故名西胡林。村子历史底蕴深厚，自然环境优美，农耕兴盛，商旅发达，有"上下清水小龙门，东西斋堂西胡林"之美称。明、清时期西胡林村以谭、石、王三大姓氏为主，由于谭、石家族购置田产，经营店铺，建造宅院，经济上达到历史上的鼎盛时期。该村于2016年被公布为第四批中国传统村落。</p>
+    
+    <div class="card-container">
+        <div class="card">
+            <h3>建村历史</h3>
+            <p>西胡林村历史悠久，据该区域今年出土的石制品及"东胡林人"的生活遗址来来看，旧石器时代这里已有人口往来，新石器时代已有人在此聚居。至于村名的由来，根据992年（辽统和十年）清水院经幢中记载，村落已定名为"胡家林"。至明代，《宛署杂记》在描述京西古道沿途村庄时提及"......又十里曰东胡家林，又三里曰西胡家林......"，胡家林村被拆分为东西两村。此后1864年（清同治四年）齐家司王老爷功德碑中有相关的文字记载，又将西胡林村称作"西护驾林村"。</p>
+            <p>村子紧邻清水河，地势平坦，土地肥沃，灌溉便利，优越的地理条件使当地农耕文化兴盛，人口繁衍迅速。另外，西胡林村正位于京西古道主干道——西山大路中段，古道的发展促使人口频繁流动，增强了村落与外界的沟通。全盛时期，村内逐渐形成谭、石两大户，两家购田建房，成立了如石德堂、万隆店等十余家商号。每逢佳节，庙宇戏台门庭若市；村内民居恢弘大气，建筑装饰精雕细刻。其盛况可谓"生齿日繁，物货溢满，坊市人迹，殆无所容"。</p>
+        </div>
+        
+        <div class="card">
+            <h3>历史事件</h3>
+            <h4>①抗战支援</h4>
+            <p>西胡林村1938年成立党支部，当时只有秘密党员5人，有石建全、石贵、王文焕、王文从、石有德。石建全为党支部书记，抗日战争时期，西胡林的百姓无私的支援八路军的抗战运动，积极的交公粮，做军鞋，据老人们回忆，西胡林村当时每年交4万公斤公粮，400双军鞋。</p>
+            <p>1938年、1939年日本鬼子为了切断八路军游击队的联系，实行并村，西胡坚决地抵制，鬼子恼羞成怒，就放火烧村，两年间竟烧毁的房间达500余间。从《军响乡》革命烈士英名录中就有28位西胡林人战死沙场。</p>
+            
+            <h4>②引通州峪水入西马涧沟</h4>
+            <p>1972年"学大寨"引通州峪水入西马涧沟。在川臼湖的崖壁上凿开山洞，1982年胜利竣工，由此西马涧沟干旱的300亩旱地变成了水浇地，这300亩地的产量一下由几十斤翻了几翻，成了300-400公斤，后又于1988年在川臼湖修了一座小型水库，为调解水资源的利用起到了极大的作用。</p>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <h2>环境格局</h2>
+    
+    <h3>村落选址</h3>
+    <p>聚落选址向来注重"觅龙、察砂、观水、点穴"，一个典型聚落必位于风水上乘之处，背山面屏，讲究山环水抱。西胡林村地势平坦，四周为群山所围，北侧山脚下清水河自西向东流过，河流与村落间留有滩涂，以防水患。村落满足典型聚落的选址要求，但不同之处在于西胡林村为南山北水。整体来看，村落四周形成封闭空间，唯东西有通廊，形成"长流水"的布局特征，亦有紫气东来之吉祥寓意。</p>
+    
+    <h3>村落格局</h3>
+    <p>村落以西南两侧山脉及京西古道为界，格局紧凑。东西向道路为村内主干道，分布密度小;南北向道路多为较窄的街巷，分布密度大。由于聚落具有自发生长的特性，先建院后成街，因此断头路较多，街道呈不规则棋盘状。民居建筑群则分布集中，公共建筑如西头的九圣庙遗迹、南头的仓院、东头的灯场分布在村子边缘，进一步强化了边界。</p>
+</div>
+
+<div class="container">
+    <h2>物质文化遗产</h2>
+    <!-- 此部分内容为空 -->
+</div>
+
+<div class="container">
+    <h2>民俗文化</h2>
+    
+    <h3>农耕文化节</h3>
+    <p>农耕文化节是西胡林村以农带旅，以旅兴农，以这座传统村落的玉米品牌作为文商旅农融合发展的切入点，展现农耕文化魅力，提高特色农产品附加值，带动乡村振兴的一个自主打造的节日。</p>
+</div>
+
+<footer>
+    <p>© 2023 西胡林村历史文化保护委员会 | 中国传统村落</p>
+</footer>
+</body>
+</html>

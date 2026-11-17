@@ -1,0 +1,394 @@
+    
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>龙王禅林古戏楼</title>
+    <style>
+        :root {
+            --primary-color: #6B4F2E; /* 更深的棕色 */
+            --secondary-color: #9C7C55; /* 黄棕色 */
+            --accent-color: #C99D5D; /* 金色 */
+            --dark-color: #4A341E; /* 深褐色 */
+            --light-color: #F4EBD9; /* 米黄色 */
+            --text-color: #3E3223; /* 深棕灰色 */
+            --shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+            --scrollbar-thumb: #B38B6B;
+            --scrollbar-track: #F5E8D0;
+        }
+        
+        body {
+            font-family: 'Noto Serif SC', 'PingFang SC', 'Microsoft YaHei', serif;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0;
+            color: var(--text-color);
+            line-height: 1.8;
+            background-color: #F8F3E9;
+            background-image: url('data:image/svg+xml;utf8,<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path fill="%23C99D5D" fill-opacity="0.05" d="M0 0h100v100H0z"/></svg>');
+        }
+        
+        /* 自定义滚动条 */
+        ::-webkit-scrollbar {
+            width: 10px;
+            height: 10px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: var(--scrollbar-track);
+            border-radius: 5px;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: var(--scrollbar-thumb);
+            border-radius: 5px;
+            border: 2px solid var(--scrollbar-track);
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--primary-color);
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--dark-color), var(--primary-color));
+            color: #F5E8D0;
+            padding: 3rem 2rem;
+            text-align: center;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow);
+            border-radius: 0 0 10px 10px;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 4px solid var(--accent-color);
+        }
+        
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml;utf8,<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path fill="none" stroke="%23C99D5D" stroke-opacity="0.1" stroke-width="1" d="M20,20 L80,20 L80,80 L20,80 Z M30,30 L70,30 L70,70 L30,70 Z" /></svg>');
+            opacity: 0.3;
+        }
+        
+        h1 {
+            font-size: 2.8rem;
+            margin: 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+            position: relative;
+            z-index: 1;
+            letter-spacing: 2px;
+            font-weight: 700;
+        }
+        
+        .subtitle {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            margin-top: 0.8rem;
+            position: relative;
+            z-index: 1;
+            font-style: italic;
+        }
+        
+        .container {
+            background: var(--light-color);
+            padding: 2.5rem;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            margin-bottom: 2.5rem;
+            border: 1px solid rgba(107, 79, 46, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .container::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100px;
+            height: 100px;
+            background: url('data:image/svg+xml;utf8,<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path fill="%23C99D5D" fill-opacity="0.05" d="M0,0 L100,0 L100,100 Z" /></svg>');
+            pointer-events: none;
+        }
+        
+        h2 {
+            color: var(--dark-color);
+            margin-top: 0;
+            padding-bottom: 0.8rem;
+            border-bottom: 3px solid var(--primary-color);
+            font-size: 2rem;
+            font-weight: 700;
+            position: relative;
+            letter-spacing: 1px;
+        }
+        
+        h2::after {
+            content: "";
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 100px;
+            height: 3px;
+            background: var(--accent-color);
+        }
+        
+        .content-text {
+            max-height: 300px;
+            overflow-y: auto;
+            padding-right: 1rem;
+            margin-bottom: 2rem;
+            border-right: 2px solid rgba(156, 124, 85, 0.2);
+        }
+        
+        .content-text p {
+            text-indent: 2em;
+            margin-bottom: 1.2em;
+            text-align: justify;
+        }
+        
+        /* 图片滑动区域 */
+        .gallery-container {
+            position: relative;
+            margin: 2rem 0;
+        }
+        
+        .gallery-title {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            padding-left: 1rem;
+            border-left: 4px solid var(--accent-color);
+        }
+        
+        .gallery {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
+            gap: 1.5rem;
+            padding: 1rem 0;
+            margin: 0 -1rem;
+        }
+        
+        .gallery::-webkit-scrollbar {
+            height: 8px;
+        }
+        
+        .gallery-item {
+            scroll-snap-align: start;
+            flex: 0 0 280px;
+            height: 200px;
+            border-radius: 6px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            position: relative;
+            transition: transform 0.3s ease;
+            border: 1px solid rgba(107, 79, 46, 0.3);
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+        
+        .gallery-item::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 40%;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.6), transparent);
+        }
+        
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 1rem;
+            color: white;
+            z-index: 1;
+            font-size: 0.9rem;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+        
+        .gallery-nav {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .gallery-nav button {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        
+        .gallery-nav button:hover {
+            background: var(--accent-color);
+            transform: scale(1.1);
+        }
+
+          /* 新增返回按钮样式 */
+        .back-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: rgba(245, 232, 208, 0.3);
+            border: 1px solid var(--light-color);
+            color: var(--light-color);
+            padding: 8px 15px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            transition: all 0.3s ease;
+            z-index: 10;
+            backdrop-filter: blur(5px);
+        }
+        
+        .back-button:hover {
+            background: rgba(245, 232, 208, 0.5);
+            transform: translateX(-3px);
+        }
+        
+        .back-button::before {
+            content: "←";
+            margin-right: 5px;
+            font-size: 1.1rem;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 0 1rem;
+            }
+            
+            header {
+                padding: 2rem 1rem;
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .container {
+                padding: 1.5rem;
+            }
+            
+            .gallery-item {
+                flex: 0 0 220px;
+                height: 160px;
+            }
+
+             .back-button {
+                top: 15px;
+                left: 15px;
+                padding: 6px 12px;
+                font-size: 0.8rem;
+            }
+
+        }
+    </style>
+</head>
+<body>
+    <header>
+
+        <a href="javascript:history.back()" class="back-button">返回</a>
+        <h1>四合院若干</h1>
+        <div class="subtitle">courtyards</div>
+    </header>
+    
+    <div class="container">
+        <h2>历史与建筑</h2>
+        
+        <div class="content-text">
+            <p>龙王观音禅林古戏楼位于大殿对面，与大殿同时兴建，清代重修。戏楼坐南朝北，与观音大殿相对而立，形成传统的"庙前戏台"格局，是古代民间祭祀与娱乐活动的重要场所。</p>
+            
+            <p>戏楼建于1.4米高的台基上，台基用当地毛石砌筑，坚固耐用。建筑为面阔三间的悬山巷棚顶结构，采用筒瓦板瓦合瓦的屋顶形式，檐柱四根支撑。戏楼中部设有隔断，将空间分为前后两台，前为表演区，后为化妆准备区。檐檩及枋间施旋于彩绘，色彩绚丽，图案精美。</p>
+            
+            <p>戏楼面宽8.6米，进深8米，规模适中，可容纳村中大部分居民观看表演。逢年过节，村中山梆子戏班常在此演出，有时也外请戏班唱戏。戏楼、龙王观音寺及中间的空场共同构成了村中的公共文化空间，承载着村民的信仰生活和娱乐活动。</p>
+        </div>
+        
+        <div class="gallery-container">
+            <h3 class="gallery-title">建筑图集</h3>
+            
+            <div class="gallery" id="imageGallery">
+                <div class="gallery-item">
+                    <img src="https://example.com/stage1.jpg" alt="古戏楼正面全景">
+                    <div class="gallery-caption">戏楼正面全景</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://example.com/stage2.jpg" alt="戏楼屋顶结构">
+                    <div class="gallery-caption">悬山巷棚顶结构</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://example.com/stage3.jpg" alt="檐部彩绘细节">
+                    <div class="gallery-caption">檐部彩绘细节</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://example.com/stage4.jpg" alt="戏台表演区">
+                    <div class="gallery-caption">戏台表演区</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://example.com/stage5.jpg" alt="戏楼与大殿相对位置">
+                    <div class="gallery-caption">戏楼与大殿相对位置</div>
+                </div>
+            </div>
+            
+            <div class="gallery-nav">
+                <button onclick="scrollGallery(-1)">←</button>
+                <button onclick="scrollGallery(1)">→</button>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        function scrollGallery(direction) {
+            const gallery = document.getElementById('imageGallery');
+            gallery.scrollBy({
+                left: direction * 300,
+                behavior: 'smooth'
+            });
+        }
+    </script>
+</body>
+</html>
+    
+    <script>
+        function scrollGallery(direction) {
+            const gallery = document.getElementById('imageGallery');
+            gallery.scrollBy({
+                left: direction * 300,
+                behavior: 'smooth'
+            });
+        }
+    </script>
+</body>
+</html>
